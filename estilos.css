@@ -9,15 +9,23 @@ html, body {
 .contenedor-padre {
     height: 100vh; /* Ocupa el 100% de la altura de la pantalla */
     width: 100vw; /* Ocupa el 100% del ancho de la pantalla */
-    background-color: blueviolet; /* Color de fondo para visualizar el contenedor */
+    background-color: rgb(227, 224, 230); /* Color de fondo para visualizar el contenedor */
 }
 
 .layout {
     width: 1366px;
     height: 768px;
-  
     display: grid;
     grid-template-rows: 62px 300px 540px 200px;
     grid-template-columns: 1fr;
+    place-items: center;
     gap: 10px;
-  }
+}
+
+#carusel{
+   
+   width: 900px;
+   background-color: rgb(225, 225, 27);
+   height: 300px;
+
+}
