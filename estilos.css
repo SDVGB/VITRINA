@@ -1,0 +1,23 @@
+/* Estilos CSS */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.contenedor-padre {
+    height: 100vh; /* Ocupa el 100% de la altura de la pantalla */
+    width: 100vw; /* Ocupa el 100% del ancho de la pantalla */
+    background-color: blueviolet; /* Color de fondo para visualizar el contenedor */
+}
+
+.layout {
+    width: 1366px;
+    height: 768px;
+  
+    display: grid;
+    grid-template-rows: 62px 300px 540px 200px;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
