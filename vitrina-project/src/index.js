@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import index from './index.css'
+import Footer from './components/footer/footer';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+// Componente principal de la aplicación
+const App = () => {
+  return (
+    <div className="App">
+      {/* Aquí se agregarán otros componentes o contenido de la aplicación */}
+      <div style={{ minHeight: 'calc(100vh - 120px)' }}>
+        {/* El contenido principal de la aplicación debe ir aquí */}
+      </div>
+      {/* El componente Footer se agrega aquí para que aparezca en la parte inferior */}
+      <Footer />
+    </div>
+  );
+};
+
+// Renderiza el componente App en el elemento con el id 'root'
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
