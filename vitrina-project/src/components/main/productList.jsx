@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
-import img01 from '../assets/img/01.png';
+import img01 from '../../assets/img/01.png';
 
 const ProductList = () => {
   const products = [

@@ -1,8 +1,8 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import car01 from '../assets/img/car01.jpg';
-import car02 from '../assets/img/car01.jpg';
-import car03 from '../assets/img/car01.jpg';
+import car01 from '../../assets/img/car01.jpg';
+import car02 from '../../assets/img/car01.jpg';
+import car03 from '../../assets/img/car01.jpg';
 
 const ProductCarousel = () => {
   return (
