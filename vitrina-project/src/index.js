@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import index from './index.css'
-import Footer from './components/footer/footer';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importa Bootstrap aquí
+import './index.css'; // Asegúrate de que este archivo exista
+import Footer from './components/footer/footer'; // No cambiar este import
+import MainContent from './components/main/mainContent';
 
 // Componente principal de la aplicación
 const App = () => {
   return (
     <div className="App">
-      {/* Aquí se agregarán otros componentes o contenido de la aplicación */}
+      {/* No incluir NavigationBar aquí */}
       <div style={{ minHeight: 'calc(100vh - 120px)' }}>
-        {/* El contenido principal de la aplicación debe ir aquí */}
+        <MainContent />
       </div>
-      {/* El componente Footer se agrega aquí para que aparezca en la parte inferior */}
       <Footer />
     </div>
   );

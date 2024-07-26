@@ -1,10 +1,9 @@
-// src/components/footer/footer.jsx
 import React from 'react';
 import './footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareFacebook, faInstagram, faSquareXTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
-const Footer = () => {
+const Footer = () => {  // defino footer  con una funcion de flecha  y un return para que devuelva un jsx con la estructura
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -54,4 +53,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer;  // se exporta para poder usarlo y llamarlo con import
