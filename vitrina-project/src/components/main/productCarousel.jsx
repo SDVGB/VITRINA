@@ -26,7 +26,7 @@ const ProductCarousel = () => {
         />
         <Carousel.Caption>
           <h3>Evita el FastFashion!</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisc eli.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
