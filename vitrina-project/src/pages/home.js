@@ -1,21 +1,22 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importa Bootstrap aquí
+import { Routes, Route } from 'react-router-dom';
+import Navbar from '../components/nav/navbar.jsx';
 import Footer from '../components/footer/footer.jsx';
 import MainContent from '../components/main/mainContent.jsx';
-import Navbar from '../components/nav/navbar.jsx';
-
+import Blog from './blog.js';
 // Componente principal de la aplicación
-const App = () => {
+function App() {
   return (
-    
-    <div className="App">
-      <Navbar/>
-      <div style={{ minHeight: 'calc(100vh - 120px)' }}>
-        <MainContent />
-      </div>
-      <Footer />
+    <div>
+      <Navbar />
+      
+      <Routes>
+        <Route path="/blog" element={<Blog />} />
+      </Routes>
+
     </div>
   );
+
 };
 
 export default App
