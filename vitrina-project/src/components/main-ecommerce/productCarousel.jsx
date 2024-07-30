@@ -1,8 +1,9 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import car01 from '../assets/img/car01.jpg';
-import car02 from '../assets/img/car01.jpg';
-import car03 from '../assets/img/car01.jpg';
+import car01 from '../../assets/img/car01.jpg';
+import car02 from '../../assets/img/car02.jpg';
+import car03 from '../../assets/img/car03.jpg';
+import './productCarousel.css';
 
 const ProductCarousel = () => {
   return (
@@ -26,7 +27,7 @@ const ProductCarousel = () => {
         />
         <Carousel.Caption>
           <h3>Evita el FastFashion!</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisc eli.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
