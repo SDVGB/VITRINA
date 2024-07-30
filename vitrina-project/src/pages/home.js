@@ -1,20 +1,18 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Navbar from '../components/nav/navbar.jsx';
-import Blog from './blog.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import MainContent from '../components/main-ecommerce/mainContent.jsx';
+
 
 // Componente principal de la aplicación
-function App() {
+const Home = () => {
   return (
-    <div>
-      <Navbar />
-      <Routes>
-        <Route path="/blog" element={<Blog />} />
-      </Routes>
-
+    
+    <div className="Home">
+      <div style={{ minHeight: 'calc(100vh - 120px)' }}>
+        <MainContent />
+      </div>
     </div>
   );
-
 };
 
-export default App
+export default Home

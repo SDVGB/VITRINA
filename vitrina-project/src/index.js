@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa Bootstrap aquí
 import './index.css'; // Asegúrate de que este archivo exista
-import App from './pages/home';
+import App from './app';
 import { BrowserRouter } from 'react-router-dom';
 
 
