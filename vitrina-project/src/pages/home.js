@@ -7,7 +7,6 @@ function App() {
   return (
     <div>
       <Navbar />
-      
       <Routes>
         <Route path="/blog" element={<Blog />} />
       </Routes>
