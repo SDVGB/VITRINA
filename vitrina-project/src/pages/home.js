@@ -1,7 +1,7 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importa Bootstrap aquí
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from '../components/footer/footer.jsx';
-import MainContent from '../components/main/mainContent.jsx';
+import MainContent from '../components/main-ecommerce/mainContent.jsx';
 import Navbar from '../components/nav/navbar.jsx';
 
 // Componente principal de la aplicación
