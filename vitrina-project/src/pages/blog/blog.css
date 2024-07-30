@@ -1,0 +1,92 @@
+.blog {
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+    max-width: 1200px; /* Aumenta el max-width para hacer más ancho el contenido */
+    padding: 20px;
+  }
+  
+  .blog-header {
+    text-align: center;
+  }
+  
+  .blog-header h1 {
+    font-size: 3rem; /* Aumenta el tamaño del h1 */
+  }
+  
+  .main-image {
+    width: calc(100% + 20px); /* Ocupa todo el ancho más el padding */
+    height: 400px; /* Ajusta la altura a lo que necesites */
+    margin: 0 -20px 20px -20px; /* Alinea la imagen con los bordes */
+    border-radius: 15px; /* Redondear esquinas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregar sombra */
+    object-fit: cover; /* Mantiene la proporción de la imagen dentro del contenedor */
+  }
+  
+  .blog-post {
+    border-top: 2px solid #2AA0CD; /* Línea de separación más gruesa y azul claro */
+    padding-top: 20px;
+  }
+  
+  .post {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding-bottom: 20px; /* Espacio para las líneas de separación */
+    border-bottom: 2px solid #2AA0CD; /* Línea de separación más gruesa y azul claro */
+  }
+  
+  .post img {
+    width: 100%; /* Ancho ajustado para ser responsivo */
+    height: auto; /* Alto ajustado para ser responsivo */
+    object-fit: cover; /* Asegura que la imagen se ajuste correctamente */
+    margin-bottom: 10px;
+    border-radius: 10px; /* Redondea las esquinas de las imágenes en los posts */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregar sombra a las imágenes */
+    transition: transform 0.3s ease; /* Suaviza la transición del efecto al pasar el mouse */
+  }
+  
+  .post img:hover {
+    transform: scale(1.05); /* Escala la imagen para hacerla resaltar */
+  }
+  
+  .post-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .more-info {
+    margin-top: auto; /* Empuja el contenido hacia el fondo del contenedor */
+    text-align: left; /* Alinea el texto a la izquierda */
+  }
+  
+  .more-info a {
+    color: #0000EE;
+    text-decoration: underline;
+  }
+  
+  .post h2 {
+    margin-top: 0;
+  }
+  
+  .post p {
+    margin-bottom: 10px;
+  }
+  
+  a {
+    color: #0000EE;
+    text-decoration: underline;
+  }
+  
+  @media (min-width: 600px) {
+    .post {
+      flex-direction: row;
+    }
+  
+    .post img {
+      width: 200px; /* Ancho fijo para pantallas más grandes */
+      height: 120px; /* Alto fijo para pantallas más grandes */
+      margin-right: 20px;
+      margin-bottom: 0;
+    }
+  }
+  
