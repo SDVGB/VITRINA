@@ -5,6 +5,7 @@ import Footer from './components/footer/footer.jsx';
 import Blog from '../src/pages/blog/blog.js';
 import Home from '../src/pages/home.js';
 import Ventas from '../src/pages/ventas.js';
+import AboutUs from './pages/about-us/aboutUs.jsx';
 
 // Componente principal de la aplicación
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/Ventas" element={<Ventas />} />
+        <Route path="/quienes-somos" element={<AboutUs />} />
       </Routes>
       <Footer />
     </div>
