@@ -1,0 +1,30 @@
+
+.carousel .carousel-item img {
+  max-height: 450px !important; 
+  max-width: 90% !important; 
+  object-fit: cover !important; 
+  border-radius: 20px !important;
+  margin: auto !important; 
+}
+
+.carousel .carousel-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5) ; 
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.carousel .carousel-caption h3 {
+  font-size: 1.5rem ;
+  font-weight: bold;
+  color: #fff;
+}
+
+.carousel .carousel-caption p {
+  font-size: 1rem ;
+  color: #fff;
+}
