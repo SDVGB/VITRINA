@@ -1,0 +1,97 @@
+
+
+#cajaPrincipal {
+    background: linear-gradient(to right, #C4C4C4, #999C9F,#738C9E, #155067 );
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5%;
+}
+
+.layout {
+    height:100%;
+  
+    display: grid;
+    grid:
+      "sidebar body" 1fr
+      / 60% 40%;
+    gap: 8px;
+}
+  
+.sidebar { 
+    grid-area: sidebar;
+    text-align: center;
+    color:white;   
+    margin-bottom: 50px;
+    .parrafito{
+        margin-top: 30px;
+
+    }
+}
+h1{
+    padding: 10% 0;
+    font-weight: 500;
+    font-size: 40px;
+  
+}
+h2{
+    padding-bottom: 3%;
+    font-size: 35px;
+}
+
+.parrafito{
+    padding: 0 20%;
+    text-align: justify;
+
+}
+.body { 
+    
+    grid-area: body; 
+    margin-top: 13%;
+
+}
+ .cajas{
+  display: flex;
+  font-size: 12px;
+  text-align: justify;
+  padding-left: 10px;
+  margin-top: 70px;
+
+ }
+.Minicaja{
+    display: inherit;
+    img{
+        width: 80px;
+        height: 100px;
+        margin-left: 20px;
+    }
+}
+.bolsareciclable{
+  
+    width: 100%;
+    margin-top: 40px;
+    padding-right: 13%;
+    img{
+        border-radius: 5%;
+        width: 100%;
+        height: 320px;
+        
+    }  
+}
+
+.fondosusc{
+    background-color: rgba(255, 255, 255, 0.69);
+    position: fixed;
+    width: 280px;
+    height: 150px;
+    top: 480px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-radius: 8%;
+    right: 10px;
+    p{  color: blue;
+        margin-top: 10px;
+        font-size: 13px;
+    }
+    h6{
+        font-size: 16px;
+    }
+}
