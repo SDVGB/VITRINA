@@ -8,12 +8,12 @@ const Navbar = () => {
       <div>
         <nav className="navbar">
           <div className="navbar-logo">
-            <a><Link to="/">V I T R I N A</Link></a>
+            <a href='/'>V I T R I N A</a>
           </div>
           <div className="navbar-menu">
             <ul className="navbar-links">
-              <li><Link to="/blog">Blog</Link></li>
-              <li><Link to="/Ventas">Ventas</Link></li>
+              <li><a href='/blog'>Blog</a></li>
+              <li><a href='/Ventas'>Ventas</a></li>
               <li><a href="/donaciones">Donaciones</a></li>
               <li><a href="/quienes-somos">Quiénes Somos</a></li>
             </ul>
