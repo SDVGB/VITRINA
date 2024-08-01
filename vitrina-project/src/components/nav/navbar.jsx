@@ -8,14 +8,14 @@ const Navbar = () => {
       <div>
         <nav className="navbar">
           <div className="navbar-logo">
-            <a href='/'>V I T R I N A</a>
+            <Link to="/">V I T R I N A</Link>
           </div>
           <div className="navbar-menu">
             <ul className="navbar-links">
-              <li><a href='/blog'>Blog</a></li>
-              <li><a href='/Ventas'>Ventas</a></li>
-              <li><a href="/donaciones">Donaciones</a></li>
-              <li><a href="/quienes-somos">Quiénes Somos</a></li>
+              <li><Link to="/Blog">Blog</Link></li>
+              <li><Link to="/Ventas">Ventas</Link></li>
+              <li><Link to="/Donaciones">Donaciones</Link></li>
+              <li><Link to="/Quienes-somos">Quiénes Somos</Link></li>
             </ul>
             <div className="navbar-login">
               <button className="login-button">Inicia sesión</button>
@@ -28,4 +28,3 @@ const Navbar = () => {
 }
 
 export default Navbar;
-
