@@ -1,9 +1,12 @@
 
 
 #cajaPrincipal {
+    margin:0 auto;
     background: linear-gradient(to right, #C4C4C4, #999C9F,#738C9E, #155067 );
     font-family: 'Roboto', sans-serif;
     border-radius: 5%;
+    max-width: 1500px;
+    max-height: 1300px;
 }
 
 .layout {
@@ -46,6 +49,7 @@ h2{
     
     grid-area: body; 
     margin-top: 13%;
+    padding-right: 13%;
 
 }
  .cajas{
@@ -68,7 +72,6 @@ h2{
   
     width: 100%;
     margin-top: 40px;
-    padding-right: 13%;
     img{
         border-radius: 5%;
         width: 100%;
@@ -79,14 +82,16 @@ h2{
 
 .fondosusc{
     background-color: rgba(255, 255, 255, 0.69);
-    position: fixed;
+    position:relative;
     width: 280px;
+    max-width: 100%;
     height: 150px;
-    top: 480px;
+    top: -80px;
     text-align: center;
     padding-bottom: 10px;
     border-radius: 8%;
-    right: 10px;
+    float: right;
+    left: 5%;
     p{  color: blue;
         margin-top: 10px;
         font-size: 13px;
