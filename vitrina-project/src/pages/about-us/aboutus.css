@@ -12,16 +12,17 @@
 .layout {
     height:100%;
   
-    display: grid;
+    /* display: grid;
     grid:
       "sidebar body" 1fr
       / 60% 40%;
-    gap: 8px;
+    gap: 8px; */
 }
   
 .sidebar { 
-    grid-area: sidebar;
+    /* grid-area: sidebar; */
     text-align: center;
+
     color:white;   
     margin-bottom: 50px;
     .parrafito{
@@ -49,11 +50,11 @@ h2{
     
     grid-area: body; 
     margin-top: 13%;
-    padding-right: 13%;
+    /* padding-right: 13%; */
 
 }
  .cajas{
-  display: flex;
+  /* display: flex; */
   font-size: 12px;
   text-align: justify;
   padding-left: 10px;
@@ -61,11 +62,11 @@ h2{
 
  }
 .Minicaja{
-    display: inherit;
+    display: flex;
     img{
         width: 80px;
         height: 100px;
-        margin-left: 20px;
+        margin: 0 20px;
     }
 }
 .bolsareciclable{
