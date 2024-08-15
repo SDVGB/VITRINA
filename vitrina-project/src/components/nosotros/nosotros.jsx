@@ -47,10 +47,10 @@ const Nosotros = ()=>{
             <div className="col-md-4 col-sm-6 col-xs-12 p-2 ">
                 <div className="team-item">
                     <figure>
-                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQG1dLd4Zy5-8g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1701999326436?e=1728518400&v=beta&t=PCKnZMC2yunfU8Q53Z2cuM0W0Ns_Mi4ax06Tb7CbyPU" alt="Stefania"/>
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczM6ClBW1K0QMcyqWKtCtD7kuL4524oImX_lIZ0GlALO-IoNtqP2Al986KKDAFJ8AfPcL-IoGIC2VZRtjXyQI14-bBKK1YSif_vAKdJBw4Tm4kIe9M4728TnlCQ7mf80vN7whib5ACGnzfR-6wCKFkuZiw=w892-h1338-s-no-gm?authuser=0" alt="Stefania"/>
                         <figcaption>
                             <div className="info">
-                                <h3>Stefania</h3>
+                                <h3>Stefania Guzman</h3>
                                 <p>Minion</p>
                             </div>
                             <div className="social">
@@ -64,7 +64,7 @@ const Nosotros = ()=>{
             <div className="col-md-4 col-sm-6 col-xs-12 p-2 ">
                 <div className="team-item">
                     <figure>
-                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQF2M2lDjHyWLQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1693797197679?e=1728518400&v=beta&t=e2Fn3qGkqvn_ytDxJ68jonNzD91ui_9o6CgeJIewVpI" alt="Lolo"/>
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczOz1nPQYHhJERrjwHkopqmYKTSdYspv6DyvR3uvnYwoNEBMwgwtHWIZpFS-U9mvXgAPLFSHlPNzKvuWavme1dDpPShHnhFkKlSlqzz4TlfzRfWWGiAYQ8MeUCcs7xr_XSwNavkJODZUrQUA3oZTv8Ah7Q=w892-h1338-s-no-gm?authuser=0" alt="Lolo"/>
                         <figcaption>
                             <div className="info">
                                 <h3>Loreto Godoy</h3>
@@ -81,7 +81,7 @@ const Nosotros = ()=>{
             <div className="col-md-4 col-sm-6 col-xs-12 p-2 ">
                 <div className="team-item">
                     <figure>
-                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQFEX75y0hVpNg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1720709357021?e=1728518400&v=beta&t=pqEm1kwVmkQGmIQt0yXrII8erBhI5pvqc-nW7TllcoQ" alt="Vale"/>
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczPwbOCcFd-ZRyMqLw5wnQ-8pgRyf6NNlGgeYn7i1kssVRAGuzCNPgUGLljcKHc0BwE8SIi36jo84UevYYP7wv8gQWuz-hVXeGl97PVXsKWM0I-Q11Nanjmu1nkzvVL8k21Xb_4naITO57KCfe59G1LN6g=w892-h1338-s-no-gm?authuser=0" alt="Vale"/>
                         <figcaption>
                             <div className="info">
                                 <h3>Valeria Arredondo</h3>

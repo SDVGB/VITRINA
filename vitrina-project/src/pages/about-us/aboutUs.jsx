@@ -39,12 +39,15 @@ const AboutUs = () => {
 
                     </div>
                     <div className="body col-md-5">
-                        <div className="bolsareciclable"> <img src="https://media.istockphoto.com/id/1307052468/es/foto/armario-de-segunda-mano-moda-circular-alquiler-intercambiar-idea-de-ropa.jpg?s=612x612&w=0&k=20&c=Cpl54deQw5RWd2MYwe1aQ63cnka35sm_Is2Ui6Huw4o=" alt="bolsaReutilizable" /></div>
-                        <div className="fondosusc">
+                        <div className="bolsareciclable">
+                            <img src="https://media.istockphoto.com/id/1307052468/es/foto/armario-de-segunda-mano-moda-circular-alquiler-intercambiar-idea-de-ropa.jpg?s=612x612&w=0&k=20&c=Cpl54deQw5RWd2MYwe1aQ63cnka35sm_Is2Ui6Huw4o=" alt="bolsaReutilizable" />
+                            <div className="fondosusc">
                             <p>Suscribete para más noticias</p>
                             <h4>¿Nuevo en la página?</h4>
                             <h6>Suscribete para recibir un newsletter semanal con las noticias más destacadas</h6>
                         </div>
+                        </div>
+                        
 
 
                     </div>
