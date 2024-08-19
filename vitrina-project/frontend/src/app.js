@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import LoginModal from './components/login/loginmodal.jsx';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/nav/navbar.jsx';
 import Footer from './components/footer/footer.jsx';
 import Blog from '../src/pages/blog/blog.js';
-import Home from '../src/pages/home.js';
+import Home from '../src/pages/home/home.js';
 import Ventas from '../src/pages/ventas.js';
 import AboutUs from './pages/about-us/aboutUs.jsx';
 import Donaciones from '../src/pages/donaciones.js'
@@ -12,6 +11,7 @@ import Logeado from '../src/components/login/logeado.jsx'
 
 // Componente principal de la aplicación
 function App() {
+  // Estado para controlar la visibilidad del modal de inicio de sesión
   const [showModal, setShowModal] = useState(false);
 
   const handleLoginClick = () => {
@@ -21,6 +21,7 @@ function App() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
   return (
     <div>
       <Navbar onLoginClick={handleLoginClick} />
@@ -40,4 +41,3 @@ function App() {
 }
 
 export default App;
-
