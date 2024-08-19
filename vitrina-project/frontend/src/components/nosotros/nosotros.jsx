@@ -12,7 +12,7 @@ const Nosotros = ()=>{
             <div className="col-md-4 col-sm-6 col-xs-12 p-2 ">
                 <div className="team-item">
                     <figure>
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMUHKUkeRyuTTAn2jVvybVAMsxP1ZmEA6Q2vOzgSngi7skNiiWQCwGQ-IcBtzYhsajdKAln-8ldpYlHneiEZYIuXQoWSkBqGhROeLZm31ISVJ5UxlTlaDesHBUt9OeGc7F5LxoHYfrR2ntMYeVZXp8xCw=w800-h800-s-no-gm?authuser=0" alt="Dania"/>
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMzrhN7tW-Z3zJ6MZ4XedI49PlLyxtZ15yf96MZJpkvOlHbjxdgcZD38ZvjzDiUMUWMzY02F6n6EzC4JKdxLftv-pzhN2eTvUSJT4OELsl7EQGzUxk8ASn_GQdO1mpY38HxU4aLKEMzVugv1AIwOCydJA=w500-h500-s-no-gm?authuser=0" alt="Dania"/>
                         <figcaption>
                             <div className="info">
                                 <h3>Dania Candia</h3>
