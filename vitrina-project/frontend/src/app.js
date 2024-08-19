@@ -8,6 +8,7 @@ import Home from '../src/pages/home.js';
 import Ventas from '../src/pages/ventas.js';
 import AboutUs from './pages/about-us/aboutUs.jsx';
 import Donaciones from '../src/pages/donaciones.js'
+import Logeado from '../src/components/login/logeado.jsx'
 
 // Componente principal de la aplicación
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/Ventas" element={<Ventas />} />
         <Route path="/Quienes-somos" element={<AboutUs />} />
         <Route path="/Donaciones" element={<Donaciones />} />
+        <Route path="/logeado" element={<Logeado />} />
       </Routes>
       <Footer />
     </div>
