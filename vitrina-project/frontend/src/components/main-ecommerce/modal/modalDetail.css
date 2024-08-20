@@ -1,11 +1,33 @@
 .modal-dialog {
-  max-width: 80%; /* ancho*/
+  max-width: 80%; /* ancho del modal */
 }
 
 .modal-content {
   display: flex;
-  flex-direction: row; /* secciones en fila*/
+  flex-direction: row; /* secciones en fila */
   padding: 20px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: flex-end; /* Alinea todo el contenido al final del encabezado (a la derecha) */
+  align-items: center; /* Centra verticalmente el título y el botón de cierre */
+  border-bottom: none; /* Opcional: quita el borde inferior */
+  padding: 0 20px; /* Espaciado interno del encabezado */
+}
+
+.modal-header .modal-title {
+  font-size: 22px;
+  margin-right: 15px; /* Espacio entre el título y el botón de cierre */
+}
+
+.modal-header .close {
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 .image-section {
@@ -13,7 +35,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 20px; 
+  margin-right: 20px;
 }
 
 .product-image {
@@ -22,22 +44,22 @@
 }
 
 .details-section {
-  flex: 1; 
+  flex: 1;
   display: flex;
-  flex-direction: column; 
-  justify-content: center; 
-  text-align: left; 
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
 }
 
 .details-section h3 {
-  font-size: 22px; 
-  margin-bottom: 10px; 
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
 .price {
-  font-size: 18px; 
+  font-size: 18px;
   color: #333;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
 .size-section {
@@ -53,30 +75,30 @@
   background-color: #074f5c;
   border: none;
   color: white;
-  margin-bottom: 10px; 
-  padding: 10px 12px; 
-  font-size: 18px; 
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  font-size: 18px;
   width: 250px;
   height: 50px;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
 }
 
 .add-to-cart:hover {
-  background-color: #063d48; 
+  background-color: #063d48;
 }
 
 .description-section {
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 
 .description-title {
   margin-top: 10px;
   font-weight: bold;
   margin-bottom: 10px;
-  font-size: 22px; 
+  font-size: 22px;
 }
 
 .description-text {
   color: #555;
-  font-size: 20px; 
+  font-size: 20px;
 }
