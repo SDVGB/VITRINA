@@ -35,7 +35,7 @@ const Logeado = () => {
 
     return (
         <>
-             {tokenExistAndStillValid ? <Home /> : <LoginModal />}  // Muestra Home o Login dependiendo del token 
+             {tokenExistAndStillValid ? <Home /> : <LoginModal />}  
         </>
     );
 };
