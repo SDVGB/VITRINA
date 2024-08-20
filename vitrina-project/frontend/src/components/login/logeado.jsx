@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import LoginModal from "./loginmodal.jsx";
-import Home from '../../pages/home.js';
+import Home from '../../pages/home/home';
+import LoginModal from '../../components/login/loginmodal';
+
 
 function parseJwt(token) {
     const base64Url = token.split('.')[1];
@@ -12,7 +13,7 @@ function parseJwt(token) {
     return JSON.parse(jsonPayload);
 }
 
-const Vlogeado = () => {
+const Logeado = () => {
     const [tokenExistAndStillValid, setTokenExistAndStillValid] = useState(false);
 
     useEffect(() => {
@@ -34,9 +35,9 @@ const Vlogeado = () => {
 
     return (
         <>
-            {tokenExistAndStillValid ? <Home /> : <LoginModal />}  // Muestra Home o Login dependiendo del token
+             {tokenExistAndStillValid ? <Home /> : <LoginModal />}  // Muestra Home o Login dependiendo del token 
         </>
     );
 };
 
-export default Vlogeado;
+export default Logeado;

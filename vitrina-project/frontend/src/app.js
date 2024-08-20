@@ -8,7 +8,7 @@ import Ventas from '../src/pages/ventas.js';
 import AboutUs from './pages/about-us/aboutUs.jsx';
 import Donaciones from '../src/pages/donaciones.js'
 import Logeado from '../src/components/login/logeado.jsx'
-
+import LoginModal from '../src/components/login/loginmodal.jsx'
 // Componente principal de la aplicación
 function App() {
   // Estado para controlar la visibilidad del modal de inicio de sesión

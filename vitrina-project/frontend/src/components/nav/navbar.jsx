@@ -1,30 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Outlet} from 'react-router-dom';
-import './navbar.css'; // Asegúrate de crear un archivo CSS para estilizar el Navbar
+import { Outlet } from 'react-router-dom';
+import './navbar.css'; 
 
 const Navbar = ({ onLoginClick }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-      <div>
-        <nav className="navbar">
-          <div className="navbar-logo">
-            <Link to="/">V I T R I N A</Link>
+    <div>
+      <nav className="navbar">
+        <div className="navbar-logo">
+          <Link to="/">V I T R I N A</Link>
+        </div>
+        <button className="hamburger" onClick={toggleMenu}>
+          ☰
+        </button>
+        <div className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
+          <ul className="navbar-links">
+            <li><Link to="/Blog" onClick={toggleMenu}>Blog</Link></li>
+            <li><Link to="/Ventas" onClick={toggleMenu}>Ventas</Link></li>
+            <li><Link to="/Donaciones" onClick={toggleMenu}>Donaciones</Link></li>
+            <li><Link to="/Quienes-somos" onClick={toggleMenu}>Quiénes Somos</Link></li>
+          </ul>
+          <div className="navbar-login">
+            <button className="login-button" onClick={onLoginClick}>Inicia sesión</button>
           </div>
-          <div className="navbar-menu">
-            <ul className="navbar-links">
-              <li><Link to="/Blog">Blog</Link></li>
-              <li><Link to="/Ventas">Ventas</Link></li>
-              <li><Link to="/Donaciones">Donaciones</Link></li>
-              <li><Link to="/Quienes-somos">Quiénes Somos</Link></li>
-            </ul>
-            <div className="navbar-login">
-              <button className="login-button" onClick={onLoginClick}>Inicia sesión</button>
-            </div>
-          </div>
-        </nav>
-        <Outlet/>
-      </div> 
+        </div>
+      </nav>
+      <Outlet/>
+    </div> 
   ); 
 }
 
 export default Navbar;
+

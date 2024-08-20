@@ -12,7 +12,7 @@ module.exports.login = (req, res) => {
             }
             
             if (result.length > 0) {
-                const token = jwt.sign({username}, "Stack", { expiresIn: "1m" }); // expires in 365 days
+                const token = jwt.sign({username}, "Stack", { expiresIn: "3m" }); // expires in 365 days
                 res.send({token})
             } else {
                 console.log('wrong user');
