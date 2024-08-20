@@ -1,149 +1,218 @@
 .header-banner {
-    display: flex;
-    flex-direction: column;  /*Cambia la dirección del eje principal a vertical */
-    justify-content: center; /* centrado vertical EJE Y */
-    align-items: center; /* centrado horizontalmente EJE X */
-    background: linear-gradient(to right, 
-        #2AA0CD 0%,   /* Color inicial */
-        #289AC5 24%,  /* Segundo color en el 24% */
-        #2489AF 37%,  /* Tercer color en el 37% */
-        #155067 81%   /* Último color en el 81% */
-    ); 
-    color: white;
-    padding: 20px;
-    border-radius: 15px;
-    margin: 20px auto; /* Centra horizontalmente */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 2050px; /* Ajusta este valor según tus necesidades */
-    height: 200px;
-
+  display: flex;
+  flex-direction: column;  /* Cambia la dirección del eje principal a vertical */
+  justify-content: center; /* Centrado vertical EJE Y */
+  align-items: center; /* Centrado horizontalmente EJE X */
+  background: linear-gradient(to right, 
+      #2AA0CD 0%,   /* Color inicial */
+      #289AC5 24%,  /* Segundo color en el 24% */
+      #2489AF 37%,  /* Tercer color en el 37% */
+      #155067 81%   /* Último color en el 81% */
+  ); 
+  color: white;
+  padding: 0px; /* 20px * 0.7 */
+  border-radius: 10.5px; /* 15px * 0.7 */
+  margin: 14px auto; /* 20px * 0.7 */
+  box-shadow: 0 2.8px 5.6px rgba(0, 0, 0, 0.1); /* Ajustado al 70% */
+  max-width: 1435px; /* 2050px * 0.7 */
+  height: 126px; /* 200px * 0.7 */
 }
 
 .header-banner h2 {
-    font-size: 3rem; /* Tamaño de fuente para el título principal */
-    margin: 0;
-    padding-bottom: 10px;
-    letter-spacing: 10px;
+  font-size: 2rem; /* 3rem * 0.7 */
+  margin: 0;
+  padding-bottom: 7px; /* 10px * 0.7 */
+  letter-spacing: 7px; /* 10px * 0.7 */
 }
 
 .header-banner p {
-    font-size: 1.25rem; /* Tamaño de fuente para el subtítulo */
-    margin: 0;
+  font-size: 0.875rem; /* 1.25rem * 0.7 */
+  margin: 0;
 }
 
 .articles-container {
-    padding: 20px;
-    background-color: #E4F2FA;
-    margin-left: 300px;
-    margin-right: 300px;
-    margin-bottom: 20px;
-  }
-  
+  padding: 14px; /* 20px * 0.7 */
+  background-color: #E4F2FA;
+  margin-left: 210px; /* 300px * 0.7 */
+  margin-right: 210px; /* 300px * 0.7 */
+  margin-bottom: 14px; /* 20px * 0.7 */
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 21px; /* 30px * 0.7 */
+  grid-template-areas: 
+    "card1 card2 large"
+    "card3 card4 large";
+}
+
+.article-card {
+  display: grid;
+  grid-template-columns: 1fr; 
+  grid-template-rows: 3fr 1fr 0.5fr 0.5fr;
+  background-color: white;
+  border-radius: 5.6px; /* 8px * 0.7 */
+  padding: 14px; /* 20px * 0.7 */
+  box-shadow: 0 1.4px 5.6px rgba(0, 0, 0, 0.1); /* Ajustado al 70% */
+  text-align: left;
+  transition: transform 0.2s;
+}
+
+.article-card:hover {
+  transform: translateY(-3.5px); /* -5px * 0.7 */
+}
+
+.article-card:nth-child(1) {
+  grid-area: card1;
+}
+
+.article-card:nth-child(2) {
+  grid-area: card2;
+}
+
+.article-card:nth-child(3) {
+  grid-area: large;
+}
+
+.article-card:nth-child(4) {
+  grid-area: card3;
+}
+
+.article-card:nth-child(5) {
+  grid-area: card4;
+}
+
+.article-card img {
+  width: 100%;
+  border-radius: 5.6px; /* 8px * 0.7 */
+  margin-bottom: 10.5px; /* 15px * 0.7 */
+  height: 100%;
+}
+
+.article-card h3 {
+  font-size: 1.05rem; /* 1.5rem * 0.7 */
+  margin-bottom: 7px; /* 10px * 0.7 */
+  margin-top: 14px; /* 20px * 0.7 */
+}
+
+.article-card p {
+  font-size: 0.7rem; /* 1rem * 0.7 */
+  margin-bottom: 14px; /* 20px * 0.7 */
+  color: #777;
+}
+
+.article-card button {
+  color: #2AA0CD;
+  padding: 7px 10.5px; /* 10px 15px * 0.7 */
+  border: 1.75px solid #2AA0CD; /* 2.5px * 0.7 */
+  border-radius: 4.2px; /* 6px * 0.7 */
+  cursor: pointer;
+  background-color: white;
+  width: 100%; /* Ajustar el ancho para que ocupe todo el contenedor */
+  font-size: 0.7rem; /* 1rem * 0.7 */
+  height: auto; /* Ajustar la altura automáticamente según el contenido */
+  text-align: center;
+}
+
+.article-card .buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.article-card .buttons button {
+  flex: 1;
+  margin-right: 7px; /* 10px * 0.7 */
+  text-align: center; /* Centrar el texto del botón */
+}
+
+.article-card .buttons button:last-child {
+  margin-right: 0;
+}
+
+.article-card.large {
+  display: grid;
+  grid-template-columns: 1fr; 
+  grid-template-rows: 4fr 0.28fr 0.7fr 0.21fr; /* Ajuste proporcional */
+}
+
+.article-card.large img {
+  height: 100%;
+  border-radius: 5.6px; /* 8px * 0.7 */
+  border: 1.4px solid rgba(128, 128, 128, 0.241); /* 2px * 0.7 */
+}
+
+/* CSS existente */
+
+@media (max-width: 1200px) {
   .articles-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto;
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
     grid-template-areas: 
-      "card1 card2 large"
-      "card3 card4 large";
-  }
-  
-  .article-card {
-    display: grid;
-    grid-template-columns: 1fr; 
-    grid-template-rows: 3fr 1fr 0.5fr 0.5fr;
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    transition: transform 0.2s;
-  }
-  
-  .article-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .article-card:nth-child(1) {
-    grid-area: card1;
-  }
-  
-  .article-card:nth-child(2) {
-    grid-area: card2;
-  }
-  
-  .article-card:nth-child(3) {
-    grid-area: large;
-  }
-  
-  .article-card:nth-child(4) {
-    grid-area: card3;
-  }
-  
-  .article-card:nth-child(5) {
-    grid-area: card4;
-  }
-  
-  .article-card img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    height: 100%;
-  }
-  
-  .article-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    margin-top: 20px;
-  }
-  
-  .article-card p {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    color: #777;
-  }
-  
-  .article-card button {
-    color: #2AA0CD;
-    padding: 10px 15px;
-    border: 2.5px solid #2AA0CD;
-    border-radius: 6px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    background-color: white;
-    width: 30%;
-    font-size: 1.2rem;
-   
-    height: 85%;
-  }
-  
-  .article-card .buttons {
-    display: flex;
-    justify-content: space-between;
- 
-  }
-  
-  .article-card .buttons button {
-    flex: 1;
-    margin-right: 10px;
-    width: 10px;
-  }
-  
-  .article-card .buttons button:last-child {
-    margin-right: 0;
-  }
-  
-  .article-card.large {
-    display: grid;
-    grid-template-columns: 1fr; 
-    grid-template-rows: 4fr 0.4fr 1fr 0.3fr;
+      "card1 card2"
+      "card3 large"
+      "card4 large";
   }
 
-  .article-card.large img{
-    height: 100%;
-    border-radius: 8px;
-    border: 2px solid rgba(128, 128, 128, 0.241);
+  .articles-container {
+    margin-left: 50px;
+    margin-right: 50px;
   }
-  
+}
+
+@media (max-width: 768px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "card1"
+      "card2"
+      "large"
+      "card3"
+      "card4";
+  }
+
+  .header-banner {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .articles-container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .articles-grid {
+    gap: 10px;
+  }
+
+  .articles-container {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+  }
+
+  .header-banner h2 {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+  }
+
+  .header-banner p {
+    font-size: 0.75rem;
+  }
+
+  .article-card h3 {
+    font-size: 0.875rem;
+  }
+
+  .article-card p {
+    font-size: 0.65rem;
+  }
+
+  .article-card button {
+    padding: 5px 8px;
+    font-size: 0.65rem;
+  }
+}

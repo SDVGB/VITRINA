@@ -6,9 +6,9 @@ import Blog from '../src/pages/blog/blog.js';
 import Home from '../src/pages/home/home.js';
 import Ventas from '../src/pages/ventas.js';
 import AboutUs from './pages/about-us/aboutUs.jsx';
-import Donaciones from '../src/pages/donaciones.js';
-import LoginModal from './components/login/loginmodal.jsx'; // Importa el LoginModal
-
+import Donaciones from '../src/pages/donaciones.js'
+import Logeado from '../src/components/login/logeado.jsx'
+import LoginModal from '../src/components/login/loginmodal.jsx'
 // Componente principal de la aplicación
 function App() {
   // Estado para controlar la visibilidad del modal de inicio de sesión
@@ -33,6 +33,7 @@ function App() {
         <Route path="/Ventas" element={<Ventas />} />
         <Route path="/Quienes-somos" element={<AboutUs />} />
         <Route path="/Donaciones" element={<Donaciones />} />
+        <Route path="/logeado" element={<Logeado />} />
       </Routes>
       <Footer />
     </div>

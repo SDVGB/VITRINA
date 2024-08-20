@@ -1,58 +1,120 @@
-/* Navbar.css */
-
+/* Estilo base para el Navbar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px;
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.395);
-    margin-bottom: 20px;
-  }
-  
-  .navbar-logo a {
-    font-family: Arial, sans-serif;
-    font-size: 24px;
-    color: #2AA0CD;
-    text-decoration: none;
-    letter-spacing: 5px; /* Incrementamos el espaciado entre letras */
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.395);
+  margin-bottom: 20px;
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+}
+
+.navbar-logo a {
+  font-family: Arial, sans-serif;
+  font-size: 22px;
+  color: #2AA0CD;
+  text-decoration: none;
+  letter-spacing: 5px; /* Incrementamos el espaciado entre letras */
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilos para el menú y enlaces */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 30px; /* Incrementamos el espacio entre los elementos de la lista */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li a {
+  text-decoration: none;
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px; /* Ajustamos el tamaño de la fuente */
+}
+
+.navbar-login .login-button {
+  background-color: #2AA0CD;
+  color: white;
+  border: none;
+  padding: 5px 23px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  border-radius: 4px; /* Añadimos bordes redondeados */
+  margin-left: 20px;
+}
+
+.navbar-login .login-button:hover {
+  background-color: #228bb5;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
   .navbar-menu {
-    display: flex;
-    align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: white;
+      padding: 20px;
+      display: none; /* Ocultamos el menú inicialmente */
+      width: 100%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
+
+  .navbar-menu.active {
+      display: flex; /* Mostramos el menú cuando esté activo */
+  }
+
   .navbar-links {
-    list-style: none;
-    display: flex;
-    gap: 30px; /* Incrementamos el espacio entre los elementos de la lista */
-    margin: 0;
-    padding: 0;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
   }
-  
-  .navbar-links li a {
-    text-decoration: none;
-    color: #000;
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px; /* Ajustamos el tamaño de la fuente */
+
+  .navbar-login {
+      margin-top: 10px;
+      width: 100%;
+      text-align: center;
   }
-  
+
   .navbar-login .login-button {
-    background-color: #2AA0CD;
-    color: white;
-    border: none;
-    padding: 6px 25px;
-    cursor: pointer;
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    border-radius: 4px; /* Añadimos bordes redondeados */
-    margin-left: 20px;
+      margin-left: 0;
+      width: 100%;
   }
-  
-  .navbar-login .login-button:hover {
-    background-color: #2AA0CD;
+
+  .navbar-logo {
+      flex: 1;
   }
-  
+
+  .hamburger {
+      display: block;
+      background-color: transparent;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+  }
+
+  .navbar-logo a {
+      font-size: 18px; /* Ajustamos el tamaño del logo */
+  }
+}
+
+/* Ocultar el menú de hamburguesa en pantallas grandes */
+@media (min-width: 769px) {
+  .hamburger {
+      display: none;
+  }
+}
