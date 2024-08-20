@@ -1,10 +1,11 @@
+/* Modal */
 .modal-dialog {
-  max-width: 80%; /* ancho del modal */
+  max-width: 80%; /* Ancho del modal */
 }
 
 .modal-content {
   display: flex;
-  flex-direction: row; /* secciones en fila */
+  flex-direction: row; /* Secciones en fila */
   padding: 20px;
 }
 
@@ -31,7 +32,7 @@
 }
 
 .image-section {
-  flex: 1.2; /* aumenta la imagen */
+  flex: 1.2; /* Aumenta la imagen */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,4 +102,20 @@
 .description-text {
   color: #555;
   font-size: 20px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .modal-content {
+    flex-direction: column; /* Secciones en columna en pantallas pequeñas */
+  }
+
+  .image-section {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .details-section {
+    text-align: center;
+  }
 }

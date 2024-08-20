@@ -39,7 +39,7 @@ const ModalDetail = ({ show, handleClose, product }) => {
             </div>
             <div className="details-section">
               <h3>{product.name}</h3>
-              <p className="price">GRATIS</p>
+              <p className="price">Precio: {product.price || '$10.000'}</p>
               <div className="size-section">
                 <p>Tamaño: <strong>Large</strong></p>
                 <div className="size-options">
@@ -51,7 +51,7 @@ const ModalDetail = ({ show, handleClose, product }) => {
               </Button>
               <div className="description-section">
                 <p className="description-title">Descripción</p>
-                <p className="description-text">La chaqueta está como nueva</p>
+                <p className="description-text">{product.description || 'Descripción no disponible'}</p>
               </div>
             </div>
           </div>

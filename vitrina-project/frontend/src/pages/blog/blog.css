@@ -1,26 +1,50 @@
 .blog {
   font-family: 'Roboto', sans-serif;
   margin: 0 auto;
-
   padding: 20px;
+  max-width: 1200px; /* Limita el ancho máximo para centrar mejor el contenido */
 }
 
 .blog-header {
   text-align: center;
+  margin-bottom: 10px; /* Reduce el espacio debajo del encabezado */
 }
 
 .blog-header h1 {
-  font-size: 3rem; /* Aumenta el tamaño del h1 */
+  font-size: 80px; /* Tamaño grande del h1 */
+  margin-top: -60px; /* Elimina el margen superior para acercarlo al navbar */
+  margin-bottom: 10px; /* Ajusta el margen inferior según sea necesario */
 }
 
-.main-image {
-  width: calc(100% + 20px); /* Ocupa todo el ancho más el padding */
-  height: 400px; /* Ajusta la altura a lo que necesites */
-  margin: 0 -20px 20px -20px; /* Alinea la imagen con los bordes */
-  border-radius: 15px; /* Redondear esquinas */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregar sombra */
-  object-fit: cover; /* Mantiene la proporción de la imagen dentro del contenedor */
+.blog-header p {
+  font-size: 20px; /* Tamaño grande del h1 */
+  margin-top: -60px; /* Elimina el margen superior para acercarlo al navbar */
+  margin-bottom: 10px; /* Ajusta el margen inferior según sea necesario */
 }
+
+.blog-header  {
+  font-size: 80px; /* Tamaño grande del h1 */
+  margin-top: -60px; /* Elimina el margen superior para acercarlo al navbar */
+  margin-bottom: 10px; /* Ajusta el margen inferior según sea necesario */
+}
+
+.blog-header img.main-image {
+  width: 1750px; /* Ocupa todo el ancho de la ventana del navegador */
+  height: 400px; /* Altura fija */
+  border-radius: 15px; /* Redondear las esquinas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregar sombra */
+  object-fit: cover; /* Mantiene la proporción de la imagen */
+  position: relative;
+  left: 50%;
+  margin-left: -1130px; /* Ajusta el margen para centrar la imagen */
+}
+
+.blog-header .date {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 10px; /* Agrega un pequeño margen superior */
+}
+
 
 .blog-post {
   border-top: 2px solid #2AA0CD; /* Línea de separación más gruesa y azul claro */
