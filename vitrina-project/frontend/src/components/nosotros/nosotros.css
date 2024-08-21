@@ -26,14 +26,14 @@
     overflow: hidden
 }
 
-img {
+/* img {
     aspect-ratio: 1;
     object-fit: cover;
     object-position: top;
     max-width: 320px;
     width: 100%;
     
-}
+} */
 
 .team .team-item figure figcaption {
     position: absolute;
