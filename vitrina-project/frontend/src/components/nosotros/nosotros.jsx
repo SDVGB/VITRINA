@@ -19,7 +19,7 @@ const Nosotros = ()=>{
             <div className="col-md-4 col-sm-6 col-xs-12 p-2 ">
                 <div className="team-item">
                     <figure>
-                        <img src={Dania} alt="Dania"/>
+                        <img  className="teamphoto" src={Dania} alt="Dania"/>
                         <figcaption>
                             <div className="info">
                                 <h3>Dania Candia</h3>
@@ -37,7 +37,7 @@ const Nosotros = ()=>{
             <div className="col-md-4 col-sm-6 col-xs-12 p-2 "  >
                 <div className="team-item">
                     <figure>
-                        <img src={Joan} alt="Joan"/>
+                        <img className="teamphoto"src={Joan} alt="Joan"/>
                         <figcaption>
                             <div className="info">
                                 <h3>Joan Rioseco</h3>
@@ -54,7 +54,7 @@ const Nosotros = ()=>{
             <div className="col-md-4 col-sm-6 col-xs-12 p-2 ">
                 <div className="team-item">
                     <figure>
-                        <img src={Stefania} alt="Stefania"/>
+                        <img className="teamphoto"src={Stefania} alt="Stefania"/>
                         <figcaption>
                             <div className="info">
                                 <h3>Stefania Guzman</h3>
@@ -71,7 +71,7 @@ const Nosotros = ()=>{
             <div className="col-md-4 col-sm-6 col-xs-12 p-2 ">
                 <div className="team-item">
                     <figure>
-                        <img src={Loreto} alt="Lolo"/>
+                        <img  className="teamphoto" src={Loreto} alt="Lolo"/>
                         <figcaption>
                             <div className="info">
                                 <h3>Loreto Godoy</h3>
@@ -88,7 +88,7 @@ const Nosotros = ()=>{
             <div className="col-md-4 col-sm-6 col-xs-12 p-2 ">
                 <div className="team-item">
                     <figure>
-                        <img src={Valeria} alt="Vale"/>
+                        <img className="teamphoto" src={Valeria} alt="Vale"/>
                         <figcaption>
                             <div className="info">
                                 <h3>Valeria Arredondo</h3>
