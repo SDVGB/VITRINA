@@ -31,7 +31,7 @@
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 30px; /* Incrementamos el espacio entre los elementos de la lista */
+  gap: 30px; /* Ajustamos el espacio entre todos los elementos del Navbar */
   margin: 0;
   padding: 0;
 }
@@ -43,6 +43,10 @@
   font-size: 16px; /* Ajustamos el tamaño de la fuente */
 }
 
+.navbar-login {
+  margin-left: 30px; /* Igualamos el margen izquierdo con el espacio entre los otros elementos */
+}
+
 .navbar-login .login-button {
   background-color: #2AA0CD;
   color: white;
@@ -52,69 +56,84 @@
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   border-radius: 4px; /* Añadimos bordes redondeados */
-  margin-left: 20px;
 }
 
 .navbar-login .login-button:hover {
   background-color: #228bb5;
 }
 
+.cart-link {
+  display: flex;
+  align-items: center;
+  margin-left: 30px; /* Igualamos el margen izquierdo con el espacio entre los otros elementos */
+}
+
+.icon-carrito {
+  font-size: 25px; /* Tamaño del ícono del carrito */
+  margin-right: 8px; /* Espacio entre el ícono y el texto */
+}
+
 /* Estilos responsivos */
 @media (max-width: 768px) {
   .navbar-menu {
-      flex-direction: column;
-      align-items: flex-start;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background-color: white;
-      padding: 20px;
-      display: none; /* Ocultamos el menú inicialmente */
-      width: 100%;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    padding: 20px;
+    display: none; /* Ocultamos el menú inicialmente */
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .navbar-menu.active {
-      display: flex; /* Mostramos el menú cuando esté activo */
+    display: flex; /* Mostramos el menú cuando esté activo */
   }
 
   .navbar-links {
-      flex-direction: column;
-      gap: 15px;
-      width: 100%;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
   }
 
   .navbar-login {
-      margin-top: 10px;
-      width: 100%;
-      text-align: center;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
   }
 
   .navbar-login .login-button {
-      margin-left: 0;
-      width: 100%;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .cart-link {
+    justify-content: center;
+    width: 100%;
   }
 
   .navbar-logo {
-      flex: 1;
+    flex: 1;
   }
 
   .hamburger {
-      display: block;
-      background-color: transparent;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
+    display: block;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
   }
 
   .navbar-logo a {
-      font-size: 18px; /* Ajustamos el tamaño del logo */
+    font-size: 18px; /* Ajustamos el tamaño del logo */
   }
 }
 
 /* Ocultar el menú de hamburguesa en pantallas grandes */
 @media (min-width: 769px) {
   .hamburger {
-      display: none;
+    display: none;
   }
 }

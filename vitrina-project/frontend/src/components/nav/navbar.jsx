@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import './navbar.css'; 
 
-const Navbar = ({ onLoginClick }) => {
+const Navbar = ({ onLoginClick, cartItemCount }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -29,6 +29,13 @@ const Navbar = ({ onLoginClick }) => {
           <div className="navbar-login">
             <button className="login-button" onClick={onLoginClick}>Inicia sesión</button>
           </div>
+          <ul className="navbar-links">
+            <li>
+              <Link to="/carrito" onClick={toggleMenu} className="cart-link">
+                <span className="icon-carrito">🛒</span> Mi Carrito ({cartItemCount})
+              </Link>
+            </li>
+          </ul>
         </div>
       </nav>
       <Outlet/>
@@ -37,4 +44,3 @@ const Navbar = ({ onLoginClick }) => {
 }
 
 export default Navbar;
-

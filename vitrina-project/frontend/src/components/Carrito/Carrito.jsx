@@ -1,28 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
+import './Carrito.css';
 
-const Carrito = ({ items }) => {
-  const [cartItems, setCartItems] = useState(items);
-
-  const removeFromCart = (index) => {
-    const newCartItems = cartItems.filter((_, i) => i !== index);
-    setCartItems(newCartItems);
-  };
+const Carrito = ({ cart, handleIncrement, handleDecrement }) => {
+  
+  const total = cart.reduce((sum, item) => {
+    const itemPrice = item.price || 0;
+    return sum + itemPrice * item.quantity;
+  }, 0);
 
   return (
-    <div>
+    <div className="container mt-5">
       <h2>Carrito de Compras</h2>
-      {cartItems.length === 0 ? (
-        <p>Tu carrito está vacío.</p>
-      ) : (
-        <ul>
-          {cartItems.map((item, index) => (
-            <li key={index}>
-              {item.name} - {item.price}€
-              <button onClick={() => removeFromCart(index)}>Eliminar</button>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul className="list-group mb-3">
+        {cart.map(item => (
+          <li key={item.id} className="list-group-item cart-item">
+            <div>
+              <img src={item.img} alt={item.name} className="item-image" />
+              <strong>{item.name}</strong>
+              <p className="mb-1">Cantidad: {item.quantity}</p>
+              <p className="mb-1">Precio: ${item.price ? item.price.toLocaleString() : 'N/A'}</p>
+            </div>
+            <div className="d-flex align-items-center">
+              <button onClick={() => handleDecrement(item.id)} className="btn btn-danger btn-sm mx-2">-</button>
+              <button onClick={() => handleIncrement(item.id)} className="btn btn-success btn-sm">+</button>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <h3>Total de la compra: ${total.toLocaleString()}</h3>
+      <button className="btn btn-primary">Contactarse!</button>
     </div>
   );
 };
