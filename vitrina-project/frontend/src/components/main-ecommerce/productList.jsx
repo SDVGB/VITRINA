@@ -25,7 +25,7 @@ import img22 from '../../assets/img/img22.png';
 import ModalDetail from './modal/modalDetail';
 import './productList.css';
 
-const ProductList = () => {
+const ProductList = ({ handleAddToCart }) => {
   const [show, setShow] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -49,17 +49,17 @@ const ProductList = () => {
     { id: 9, name: 'Cosmetiquero', img: img09 },
     { id: 10, name: 'Ropa de niño', img: img10 },
     { id: 11, name: 'Ropa de niña', img: img11 },
-    { id: 12, name: 'BConjunto vintage de bebe', img: img12 },
+    { id: 12, name: 'Conjunto vintage de bebe', img: img12 },
     { id: 13, name: 'Pantalon de niña', img: img13 },
     { id: 14, name: 'Ropa niña invierno', img: img14 },
     { id: 15, name: 'Poleras niña', img: img15 },
     { id: 16, name: 'Conjunto niño', img: img16 },
     { id: 17, name: 'Ropa niño y niña', img: img17 },
-    { id: 18, name: 'Bolsos', img: img18 }, 
-    { id: 19, name: 'Carteras', img: img19 }, 
-    { id: 21, name: 'Conjunto pijama', img: img20 }, 
-    { id: 22, name: 'Blusa negra', img: img21 },
-    { id: 23, name: 'Cortavientos vintage', img: img22 } 
+    { id: 18, name: 'Bolsos', img: img18 },
+    { id: 19, name: 'Carteras', img: img19 },
+    { id: 20, name: 'Conjunto pijama', img: img20 },
+    { id: 21, name: 'Blusa negra', img: img21 },
+    { id: 22, name: 'Cortavientos vintage', img: img22 }
   ];
 
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -104,7 +104,7 @@ const ProductList = () => {
         <Pagination.Next onClick={nextPage} disabled={currentPage === pageNumbers.length} />
       </Pagination>
 
-      <ModalDetail show={show} handleClose={handleClose} product={selectedProduct} />
+      <ModalDetail show={show} handleClose={handleClose} product={selectedProduct} handleAddToCart={handleAddToCart} />
     </div>
   );
 };

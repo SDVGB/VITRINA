@@ -2,11 +2,11 @@ import React from 'react';
 import ProductCarousel from './productCarousel';
 import ProductList from './productList';
 
-const MainContent = () => {
+const MainContent = ({ handleAddToCart }) => {
   return (
     <div>
       <ProductCarousel />
-      <ProductList />
+      <ProductList handleAddToCart={handleAddToCart} />
     </div>
   );
 };
