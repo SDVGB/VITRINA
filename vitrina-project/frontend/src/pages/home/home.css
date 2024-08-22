@@ -14,7 +14,8 @@
   border-radius: 10.5px; /* 15px * 0.7 */
   margin: 14px auto; /* 20px * 0.7 */
   box-shadow: 0 2.8px 5.6px rgba(0, 0, 0, 0.1); /* Ajustado al 70% */
-  max-width: 1435px; /* 2050px * 0.7 */
+  /* Se comenta ancho máximo del banner */
+  /* max-width: 1435px; 2050px * 0.7 */ 
   height: 126px; /* 200px * 0.7 */
 }
 
@@ -214,5 +215,13 @@
   .article-card button {
     padding: 5px 8px;
     font-size: 0.65rem;
+  }
+}
+/*  aca empieza el css de los cambios posteriores, para responsive y luego enlazar al home */
+
+#Contenedor-ultima-venta{
+  img{
+    /* Se utiliza el margen para centrarla de forma horizontal */
+    margin: 0 auto;
   }
 }

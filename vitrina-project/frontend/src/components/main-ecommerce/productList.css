@@ -32,14 +32,14 @@
   width: 100%;
   height: 50px;
   margin-top: 10px;
-  background-color: rgb(4, 110, 124);
-  border-color: rgba(0, 0, 0, 0.582);
+  background-color: #2AA0CD !important; /* Forzar el color */
 }
 
 .custom-button:hover {
-  background-color: rgb(2, 74, 83);
-  border-color: rgba(0, 0, 0, 0.164);
+  background-color: #1679a0 !important; /* Un tono más oscuro para el hover */
+  
 }
+
 
 .pagination {
   margin-top: 20px;

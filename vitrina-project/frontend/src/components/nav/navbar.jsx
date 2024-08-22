@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import './navbar.css'; 
 
-const Navbar = ({ onLoginClick, isAuthenticated }) => {
+const Navbar = ({ onLoginClick, cartItemCount }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -37,6 +37,13 @@ const Navbar = ({ onLoginClick, isAuthenticated }) => {
               </button>
             )}
           </div>
+          <ul className="navbar-links">
+            <li>
+              <Link to="/carrito" onClick={toggleMenu} className="cart-link">
+                <span className="icon-carrito">🛒</span> Mi Carrito ({cartItemCount})
+              </Link>
+            </li>
+          </ul>
         </div>
       </nav>
       <Outlet />

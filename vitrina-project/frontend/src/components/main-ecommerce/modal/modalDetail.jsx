@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './modalDetail.css';
 
-const ModalDetail = ({ show, handleClose, product }) => {
+const ModalDetail = ({ show, handleClose, product, handleAddToCart }) => {
   const [showContactForm, setShowContactForm] = useState(false);
 
   const handleContactClick = () => {
@@ -26,6 +26,9 @@ const ModalDetail = ({ show, handleClose, product }) => {
     );
   }
 
+  // Asegurarse de que el precio es un número y no una cadena
+  const productPrice = product.price ? parseFloat(product.price) : 10000;
+
   return (
     <>
       <Modal show={show} onHide={handleClose} size="xl" centered>
@@ -39,19 +42,24 @@ const ModalDetail = ({ show, handleClose, product }) => {
             </div>
             <div className="details-section">
               <h3>{product.name}</h3>
-              <p className="price">GRATIS</p>
+              <p className="price">Precio: ${productPrice.toLocaleString()}</p>
               <div className="size-section">
                 <p>Tamaño: <strong>Large</strong></p>
                 <div className="size-options">
                   <Button variant="outline-secondary" size="sm">L</Button>
                 </div>
               </div>
-              <Button variant="primary" className="add-to-cart" onClick={handleContactClick}>
-                Contactar
-              </Button>
+              <div className="d-flex justify-content-between">
+                <Button variant="primary" className="add-to-cart" onClick={() => handleAddToCart({ ...product, price: productPrice })}>
+                  Agregar al Carrito
+                </Button>
+                <Button variant="primary" onClick={handleContactClick}>
+                  Contactar
+                </Button>
+              </div>
               <div className="description-section">
                 <p className="description-title">Descripción</p>
-                <p className="description-text">La chaqueta está como nueva</p>
+                <p className="description-text">{product.description || 'Descripción no disponible'}</p>
               </div>
             </div>
           </div>
@@ -66,7 +74,7 @@ const ModalDetail = ({ show, handleClose, product }) => {
           <Form>
             <Form.Group controlId="formEmail">
               <Form.Label>Dirección de e-mail*</Form.Label>
-              <Form.Control type="email" placeholder="Ingresa tu email"  />
+              <Form.Control type="email" placeholder="Ingresa tu email" />
             </Form.Group>
 
             <Form.Group controlId="formName">

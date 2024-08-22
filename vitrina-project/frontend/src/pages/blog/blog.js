@@ -17,8 +17,10 @@ const Blog = () => {
         <p>blog dedicado a noticias y novedades de nuestra vitrina</p>
         <img src="https://s1.elespanol.com/2023/02/24/quincemil/vivir/moda-vivir/743936527_244743260_1706x960.jpg" alt="Ropa" className="main-image" />
       </header>
+      <p className="date">{currentDate}</p> {/* Mover la fecha aquí */}
+      
       <div className="blog-post">
-        <p>{currentDate}</p>
+  
         <div className="post">
           <img src="https://i.pinimg.com/originals/f0/a2/69/f0a2698e9891635c30e55757b482b074.jpg" alt="Teñir ropa" />
           <div>
