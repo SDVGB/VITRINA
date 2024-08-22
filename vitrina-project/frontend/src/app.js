@@ -10,11 +10,21 @@ import Donaciones from '../src/pages/donaciones.js';
 import Logeado from '../src/components/login/logeado.jsx';
 import LoginModal from '../src/components/login/loginmodal.jsx';
 import Carrito from '../src/components/Carrito/Carrito.jsx';
+import { useCart } from '../src/components/Carrito/useCart.js';
 
+// Componente principal de la aplicación
 function App() {
   const [showModal, setShowModal] = useState(false);
-  const [cart, setCart] = useState([]);
-  const [showConfirmation, setShowConfirmation] = useState(false); // Estado para mostrar el mensaje de confirmación
+  
+  // Hook para manejar el carro
+  const {
+    cart,
+    showConfirmation,
+    handleAddToCart,
+    handleIncrement,
+    handleDecrement,
+    totalItemsInCart
+  } = useCart(); 
 
   const handleLoginClick = () => {
     setShowModal(true);
@@ -24,51 +34,12 @@ function App() {
     setShowModal(false);
   };
 
-  const handleAddToCart = (product) => {
-    setCart(prevCart => {
-      const existingProduct = prevCart.find(item => item.id === product.id);
-      if (existingProduct) {
-        return prevCart.map(item =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      } else {
-        return [...prevCart, { ...product, quantity: 1 }];
-      }
-    });
-
-    setShowConfirmation(true); // Mostrar el mensaje de confirmación
-    setTimeout(() => {
-      setShowConfirmation(false); // Ocultar el mensaje después de 3 segundos
-    }, 3000);
-  };
-
-  const handleIncrement = (id) => {
-    setCart(prevCart =>
-      prevCart.map(item =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  };
-
-  const handleDecrement = (id) => {
-    setCart(prevCart =>
-      prevCart
-        .map(item =>
-          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
-        )
-        .filter(item => item.quantity > 0)
-    );
-  };
-
-  // Contar la cantidad total de productos en el carrito
-  const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
-
   return (
     <div id="root">
       <Navbar onLoginClick={handleLoginClick} cartItemCount={totalItemsInCart} />
       <LoginModal show={showModal} handleClose={handleCloseModal} />
 
-      {/* Mostrar mensaje de confirmación */}
+      {/* Alerta de confirmacion */}
       {showConfirmation && (
         <div className="alert alert-success text-center" role="alert">
           Producto agregado al carrito con éxito
