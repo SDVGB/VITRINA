@@ -73,6 +73,100 @@
   margin-right: 8px; /* Espacio entre el ícono y el texto */
 }
 
+.logoPublicaciones{
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+}
+.logoUsuario{
+  border: none !important;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+}
+/* Boostrap*/
+
+/* Ajustar el tamaño del botón */
+/* Asegurar que el botón esté alineado verticalmente */
+.btn-group {
+  display: flex;
+  align-items: center; /* Alinear verticalmente el botón */
+  justify-content: center; /* Centrar horizontalmente el contenido */
+}
+
+.btn-group .btn-primary {
+  width: 20px;  /* Ajusta el ancho según sea necesario */
+  height: 20px; /* Ajusta la altura según sea necesario */
+  padding: 0; /* Ajusta el padding interno */
+  display: flex; /* Asegura que el contenido esté centrado */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  border-radius: 50%; /* Si deseas que el botón sea redondeado */
+  border: none; /* Elimina el borde del botón */
+  background-color: transparent; /* Fondo transparente */
+}
+
+/* Seleccionar el botón dropdown-toggle específico */
+.btn-group .btn-primary.dropdown-toggle {
+  width: 24px;  /* Ajusta el ancho del botón */
+  height: 24px; /* Ajusta la altura del botón */
+  padding: 0; /* Elimina el padding interno */
+  margin: 0; /* Asegúrate de eliminar cualquier margen adicional */
+  display: flex; /* Para centrar el contenido dentro del botón */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  border-radius: 50%; /* Si deseas que el botón sea redondeado */
+  background-color: transparent; /* Fondo transparente */
+  border: none; /* Elimina cualquier borde */
+}
+
+/* Ajustar el tamaño del icono dentro del botón */
+.logoPublicaciones {
+  width: 20px; /* Ajusta el tamaño del icono */
+  height: 20px;
+}
+
+
+.logoPublicaciones {
+  border-top: 3px;
+  width: 20px; /* Ajusta el tamaño del icono dentro del botón */
+  height: 20px;
+}
+
+/* Estilo para ajustar la posición del dropdown-menu */
+.btn-group .dropdown-menu {
+  margin-top: 30px; /* Ajusta este valor según la distancia que quieras */
+  /* Alternativamente, puedes usar `top` si el dropdown es absolutamente posicionado */
+  /* top: 10px; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.BlogoUsuario{
+  border: none !important;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+}
 /* Estilos responsivos */
 @media (max-width: 768px) {
   .navbar-menu {
