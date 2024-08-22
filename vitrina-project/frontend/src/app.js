@@ -76,8 +76,7 @@ function App() {
 
   return (
     <div id="root">
-      <Navbar onLoginClick={handleLoginClick} isAuthenticated={isAuthenticated} cartItemCount={totalItemsInCart} />
-      <LoginModal show={showModal} handleClose={handleCloseModal} setIsAuthenticated={setIsAuthenticated} />
+      
 
       {/* Mostrar mensaje de confirmación */}
       {showConfirmation && (
@@ -90,6 +89,8 @@ function App() {
       <div className="main-content">
         {isAuthenticated && <Logeado setIsAuthenticated={setIsAuthenticated} />}
         {/* Se monta Logeado en todas las rutas si el usuario está autenticado */}
+        <Navbar onLoginClick={handleLoginClick} isAuthenticated={isAuthenticated} cartItemCount={totalItemsInCart} />
+        <LoginModal show={showModal} handleClose={handleCloseModal} setIsAuthenticated={setIsAuthenticated} />
 
         <Routes>
           
