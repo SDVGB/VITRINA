@@ -1,4 +1,3 @@
-// src/hooks/useCart.js
 import { useState } from 'react';
 
 export const useCart = () => {
