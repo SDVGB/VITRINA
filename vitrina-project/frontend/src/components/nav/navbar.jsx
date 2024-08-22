@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import './navbar.css'; 
 
-const Navbar = ({ onLoginClick, cartItemCount }) => {
+
+const Navbar = ({ onLoginClick, cartItemCount,isAuthenticated  }) => {
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
