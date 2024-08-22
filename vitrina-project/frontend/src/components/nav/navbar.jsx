@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import './navbar.css'; 
 
-const Navbar = ({ onLoginClick }) => {
+const Navbar = ({ onLoginClick, isAuthenticated }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -25,16 +24,24 @@ const Navbar = ({ onLoginClick }) => {
             <li><Link to="/Ventas" onClick={toggleMenu}>Ventas</Link></li>
             <li><Link to="/Donaciones" onClick={toggleMenu}>Donaciones</Link></li>
             <li><Link to="/Quienes-somos" onClick={toggleMenu}>Quiénes Somos</Link></li>
+            
+            {/* Enlace al Dashboard solo si el usuario está autenticado */}
+            {isAuthenticated && (
+              <li><Link to="/dashboard" onClick={toggleMenu}>Dashboard</Link></li>
+            )}
           </ul>
           <div className="navbar-login">
-            <button className="login-button" onClick={onLoginClick}>Inicia sesión</button>
+            {!isAuthenticated && (
+              <button className="login-button" onClick={onLoginClick}>
+                Inicia sesión
+              </button>
+            )}
           </div>
         </div>
       </nav>
-      <Outlet/>
-    </div> 
+      <Outlet />
+    </div>
   ); 
 }
 
 export default Navbar;
-
