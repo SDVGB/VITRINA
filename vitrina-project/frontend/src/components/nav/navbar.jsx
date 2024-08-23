@@ -55,8 +55,8 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated }) => {
                       <img src={nuevapublicacion} alt="logo-publicaciones" className='logoPublicaciones' />
                     </button>
                     <ul className="dropdown-menu">
-                      <li><Link className="dropdown-item" to="/Publicaciones">Subir Articulo</Link></li>
-                      <li><Link className="dropdown-item" to="/Publicaciones">Crear publicación</Link></li>
+                      <li><Link className="dropdown-item" to="/Publicaciones">Subir Artículo</Link></li>
+                      <li><Link className="dropdown-item" to="/Publicaciones">Crear Publicación</Link></li>
                     </ul>
                   </div>
                   <div className="btn-group" role="group">

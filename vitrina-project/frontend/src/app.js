@@ -12,6 +12,8 @@ import LoginModal from '../src/components/login/loginmodal.jsx';
 import Carrito from '../src/components/Carrito/Carrito.jsx';
 import ProtectedRoute from '../src/components/nav/protectedRoute.jsx';  // Importa el componente de ruta protegida
 import Dashboard from './components/protected-Routes/Dashboard.jsx';  // Importa el nuevo componente seguro
+import Notificaciones from './components/Notificaciones/Notificaciones.jsx';  // Importa el componente Notificaciones
+import Perfil from './components/Perfil/Perfil.jsx'; 
 import { useCart } from './components/Carrito/useCart.js';  
 
 function App() {
@@ -64,6 +66,8 @@ function App() {
           <Route path="/Ventas" element={<Ventas isAuthenticated={isAuthenticated} handleAddToCart={handleAddToCart} />} />
           <Route path="/Quienes-somos" element={<AboutUs isAuthenticated={isAuthenticated} />} />
           <Route path="/Donaciones" element={<Donaciones isAuthenticated={isAuthenticated} />} />
+          <Route path="/notificaciones" element={<Notificaciones />} /> {/* Ruta para Notificaciones */}
+          <Route path="/perfil" element={<Perfil />} /> {/* Ruta para Perfil */}
           <Route path="/*" element={<Home isAuthenticated={isAuthenticated} />} />
 
           <Route path="/carrito" element={

@@ -9,15 +9,16 @@ const getPublicacion =(request, response) =>{
     try {
         connection.query(consult, (error, resultados) => {
             if (error) {
-                response.send(error)
+                response.json({ error: error})
+            } else {
+                // Devolvemos la primer publicación que entregue la base de datos y si no existe ninguna devuelve null
+                response.json({
+                    publicacion: resultados[0] || null
+                })
             }
-            // Devolvemos la primer publicación que entregue la base de datos y si no existe ninguna devuelve null
-            response.json({
-                publicacion: resultados[0] || null
-            })
         })
     } catch (error) {
-        response.send(error)
+        response.json({ error: error })
     }
 }
 
