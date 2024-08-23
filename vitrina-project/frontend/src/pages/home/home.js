@@ -52,7 +52,7 @@ const Home = () => {
                         <img src={articulo.Imagen_Articulos_Ruta} alt={articulo.Nombre_Articulo} />
                         <h3>{articulo.Nombre_Articulo}</h3>
                         <p>{articulo.Descripcion_Articulos}</p>
-                        <a href={articulo.Link_Ref_Articulos} target='_blank'>
+                        <a href={articulo.Link_Ref_Articulos} target='_blank' rel="noreferrer">
                           <button>Ver más</button>
                         </a>
                       </div>
@@ -84,6 +84,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );
