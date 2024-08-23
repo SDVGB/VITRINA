@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductCarousel from '../../components/main-ecommerce/productCarousel';
 import './home.css';
+import { Link } from 'react-router-dom';
 
 // Componente principal de la aplicación
 const Home = () => {
+  // Se crean las variables de los articulos y la publicación que se va a mostrar
+  const [articulos, setArticulos] = useState([])
+  const [publicacion, setPublicacion]=useState(null)
+
+  // Se crean las funciones que traeran los artículos y la publicación desde el servidor
+  const fetchArticulos = async () => {
+    const respuesta = await fetch('http://localhost:5000/articulos?sort=Fecha_Articulo:desc&limit=4')
+    const json = await respuesta.json()
+    setArticulos(json.articulos)
+  }
+  const fetchPublicacion= async()=>{
+    const respuesta = await fetch('http://localhost:5000/publicacion')
+    const json = await respuesta.json()
+    setPublicacion(json.publicacion)
+  }
+
+  // Se utiliza useEffect para que traiga los artículos y la publicación al cargar el componente
+  useEffect(() => {
+    fetchArticulos()
+    fetchPublicacion()
+  }, [])
+
   return (
     <div className="Home">
       <div style={{ minHeight: 'calc(100vh - 120px)' }}>
@@ -21,44 +44,41 @@ const Home = () => {
             <div className='row'>
               {/* Las publicaciones del blog quedan a la izquierda utilizando la mitad de la pantalla */}
               <div className='col-md-6' id='Contenedor-publicaciones-blog'>
-                <div className='row' > 
-                  <div className="article-card col-md-6">
-                    <img src="https://i.pinimg.com/originals/f0/a2/69/f0a2698e9891635c30e55757b482b074.jpg" alt="Cuatro maneras para teñir la ropa y poder reutilizar" />
-                    <h3>Cuatro maneras para teñir la ropa y poder reutilizar</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <button>Ver más</button>
-                  </div>
-                  <div className="article-card col-md-6">
-                    <img src="https://c.files.bbci.co.uk/10077/production/_122955656_atacama-39.jpg" alt="La ruta de la ropa usada que termina como basura en el desierto" />
-                    <h3>La ruta de la ropa usada que termina como basura en el desierto</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <button>Ver más</button>
-                  </div>
-                  <div className="article-card col-md-6">
-                    <img src="https://a1.elespanol.com/cronicaglobal/2015/01/20/vida/vida_4760339_2175570_1706x960.jpg" alt="Top 5: Lugares de ropa usada en Santiago" />
-                    <h3>Top 5: Lugares de ropa usada en Santiago</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <button>Ver más</button>
-                  </div>
-                  <div className="article-card col-md-6">
-                    <img src="https://masdearte.com/media/prop_casaencendida_textil.jpg" alt="Nueva campaña Paris 'Moda circular'" />
-                    <h3>Nueva campaña Paris "Moda circular"</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <button>Ver más</button>
-                  </div>
+                <div className='row' >
+                  {/* Recorremos todos los artículos que se trajeron desde el servidor y creamos cada artículo */}
+                  {
+                    articulos.map((articulo) => (
+                      <div key={articulo.ID_Articulos} className="article-card col-md-6">
+                        <img src={articulo.Imagen_Articulos_Ruta} alt={articulo.Nombre_Articulo} />
+                        <h3>{articulo.Nombre_Articulo}</h3>
+                        <p>{articulo.Descripcion_Articulos}</p>
+                        <a href={articulo.Link_Ref_Articulos} target='_blank'>
+                          <button>Ver más</button>
+                        </a>
+                      </div>
+                    ))
+                  }
+                  
                 </div>
 
               </div>
               {/* La última venta queda a la derecha utilizando la otra mitad de la pantalla */}
               <div className='col-md-6' id="Contenedor-ultima-venta">
                 <div className="article-card large">
-                  <img src="https://laropaamericana.cl/wp-content/uploads/2023/04/Cortavientos_De_Marca_Usado_La_Ropa_Americana_-Ropa_Usada_De_Marca_Santiago_Ropa_Americana_Online-89-1.jpg" alt="Nuevo! Chaqueta impermeable - L" />
-                  <h3>¡Nuevo! Chaqueta impermeable - L</h3>
-                  <p>Se regala chaqueta, marca Mountain Hardwear de hombre, sin uso. Entrega en metros a convenir. Contacto solo por correo.</p>
-                  <div className="buttons">
-                    <button>Contactar</button>
-                    <button>Ver más</button>
-                  </div>
+                  {/* Si es que el servidor nos devuelve una publicación, la muestra */}
+                  {
+                    publicacion && (
+                      <Fragment>
+                        <img src={publicacion.Imagen_Publicacion_Rutas} alt={`Nuevo! ${publicacion.Nombre_Publicacion} - L`} />
+                        <h3>¡Nuevo! {publicacion.Nombre_Publicacion} - L</h3>
+                        <p>Se regala chaqueta, marca Mountain Hardwear de hombre, sin uso. Entrega en metros a convenir. Contacto solo por correo.</p>
+                        <div className="buttons">
+                          <button>Contactar</button>
+                          <Link to='/Ventas'><button>Ver más</button></Link>
+                        </div>
+                      </Fragment>
+                    )
+                  }
                 </div>
               </div>
             </div>
