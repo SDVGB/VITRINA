@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './modalDetail.css';
 
-const ModalDetail = ({ show, handleClose, product, handleAddToCart }) => {
+const ModalDetail = ({ show, handleClose, product, handleAddToCart, userEmail }) => {
   const [showContactForm, setShowContactForm] = useState(false);
+  const [message, setMessage] = useState('');
+  const [name, setName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
 
   const handleContactClick = () => {
     setShowContactForm(true);
@@ -11,6 +14,14 @@ const ModalDetail = ({ show, handleClose, product, handleAddToCart }) => {
 
   const handleContactClose = () => {
     setShowContactForm(false);
+  };
+
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    // Aquí iría la lógica para enviar el mensaje
+    console.log(`Mensaje enviado por ${name} (${userEmail}): ${message}`);
+    console.log(`Teléfono: ${phoneNumber}`);
+    handleContactClose(); // Cerrar el formulario después de enviar el mensaje
   };
 
   if (!product) {
@@ -26,7 +37,6 @@ const ModalDetail = ({ show, handleClose, product, handleAddToCart }) => {
     );
   }
 
-  // Asegurarse de que el precio es un número y no una cadena
   const productPrice = product.price ? parseFloat(product.price) : 10000;
 
   return (
@@ -71,20 +81,32 @@ const ModalDetail = ({ show, handleClose, product, handleAddToCart }) => {
           <Modal.Title>Enviar mensaje al vendedor</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={handleSendMessage}>
             <Form.Group controlId="formEmail">
               <Form.Label>Dirección de e-mail*</Form.Label>
-              <Form.Control type="email" placeholder="Ingresa tu email" />
+              <Form.Control type="email" value={userEmail} readOnly />
             </Form.Group>
 
             <Form.Group controlId="formName">
               <Form.Label>Nombre*</Form.Label>
-              <Form.Control type="text" placeholder="Ingresa tu nombre" />
+              <Form.Control
+                type="text"
+                placeholder="Ingresa tu nombre"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
             </Form.Group>
 
             <Form.Group controlId="formPhoneNumber">
               <Form.Label>Número de teléfono*</Form.Label>
-              <Form.Control type="tel" placeholder="Ingresa tu número de teléfono" />
+              <Form.Control
+                type="tel"
+                placeholder="Ingresa tu número de teléfono"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                required
+              />
             </Form.Group>
 
             <Form.Group controlId="formRecaptcha">
@@ -93,7 +115,13 @@ const ModalDetail = ({ show, handleClose, product, handleAddToCart }) => {
 
             <Form.Group controlId="formMessage">
               <Form.Label>Mensaje</Form.Label>
-              <Form.Control as="textarea" rows={3} defaultValue={`Me interesa el anuncio "${product.name}" que tienes publicado. Por favor comunícate conmigo.`} />
+              <Form.Control
+                as="textarea"
+                rows={3}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                defaultValue={`Me interesa el anuncio "${product.name}" que tienes publicado. Por favor comunícate conmigo.`}
+              />
             </Form.Group>
 
             <Button variant="primary" type="submit">

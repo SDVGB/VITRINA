@@ -73,21 +73,33 @@
   margin-right: 8px; /* Espacio entre el ícono y el texto */
 }
 
-.logoPublicaciones{
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0;
-  margin: 0;
-  width: 20px;
-  height: 20px;
+/* Contenedor para agrupar los íconos en horizontal */
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espaciado entre los íconos */
+  margin-left: auto; /* Mueve los íconos a la derecha */
+  margin-right: 20px; /* Espacio antes del carrito */
 }
-.logoUsuario{
-  border: none !important;
-  width: 20px;
-  height: 20px;
-  border-radius: 20px;
+
+.logoPublicaciones,
+.logoUsuario {
+  margin-left: 50px;
+  width: 30px;
+  height: 30px;
+  display: flex;
 }
-/* Boostrap*/
+.logoNotificaciones{
+  margin-left: 50px;
+  width: 40px;
+  height: 40px;
+}
+
+.logoUsuario {
+  border-radius: 50%; /* Hace que la imagen tenga forma circular */
+}
+
+/* Boostrap */
 
 /* Ajustar el tamaño del botón */
 /* Asegurar que el botón esté alineado verticalmente */
@@ -109,7 +121,6 @@
   background-color: transparent; /* Fondo transparente */
 }
 
-/* Seleccionar el botón dropdown-toggle específico */
 .btn-group .btn-primary.dropdown-toggle {
   width: 24px;  /* Ajusta el ancho del botón */
   height: 24px; /* Ajusta la altura del botón */
@@ -123,39 +134,76 @@
   border: none; /* Elimina cualquier borde */
 }
 
-/* Ajustar el tamaño del icono dentro del botón */
-.logoPublicaciones {
-  width: 20px; /* Ajusta el tamaño del icono */
-  height: 20px;
-}
-
-
-.logoPublicaciones {
-  border-top: 3px;
-  width: 20px; /* Ajusta el tamaño del icono dentro del botón */
-  height: 20px;
-}
-
-/* Estilo para ajustar la posición del dropdown-menu */
 .btn-group .dropdown-menu {
   margin-top: 30px; /* Ajusta este valor según la distancia que quieras */
-  /* Alternativamente, puedes usar `top` si el dropdown es absolutamente posicionado */
-  /* top: 10px; */
 }
 
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .navbar-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    padding: 20px;
+    display: none; /* Ocultamos el menú inicialmente */
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Asegura que el menú esté por delante del contenido */
+  }
 
+  .navbar-menu.active {
+    display: flex; /* Mostramos el menú cuando esté activo */
+  }
 
+  .navbar-links {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
 
+  .navbar-login {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
 
+  .navbar-login .login-button {
+    margin-left: 0;
+    width: 100%;
+  }
 
+  .cart-link {
+    justify-content: center;
+    width: 100%;
+  }
 
+  .navbar-logo {
+    flex: 1;
+  }
 
+  .hamburger {
+    display: block;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1100; /* Asegura que el botón esté siempre al frente */
+  }
 
+  .navbar-logo a {
+    font-size: 18px; /* Ajustamos el tamaño del logo */
+  }
+}
 
-
-
-
-
+/* Ocultar el menú de hamburguesa en pantallas grandes */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
+}
 
 
 
