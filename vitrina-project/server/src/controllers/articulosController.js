@@ -17,13 +17,14 @@ module.exports.getArticulos = (request, response) => {
     try {
         connection.query(consult, (error, resultados) => {
             if (error) {
-                response.send(error)
+                response.json({ error: error })
+            } else {
+                response.json({
+                    articulos: resultados
+                })
             }
-            response.json({
-                articulos: resultados
-            })
         })
     } catch (error) {
-        response.send(error)
+        response.json({ error: error })
     }
 }
