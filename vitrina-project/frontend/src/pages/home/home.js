@@ -1,20 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductCarousel from '../../components/main-ecommerce/productCarousel';
 import './home.css';
+import { Link } from 'react-router-dom';
 
 // Componente principal de la aplicación
 const Home = () => {
+  // Se crean las variables de los articulos y la publicación que se va a mostrar
   const [articulos, setArticulos] = useState([])
+  const [publicacion, setPublicacion]=useState(null)
 
+  // Se crean las funciones que traeran los artículos y la publicación desde el servidor
   const fetchArticulos = async () => {
     const respuesta = await fetch('http://localhost:5000/articulos?sort=Fecha_Articulo:desc&limit=4')
     const json = await respuesta.json()
     setArticulos(json.articulos)
   }
+  const fetchPublicacion= async()=>{
+    const respuesta = await fetch('http://localhost:5000/publicacion')
+    const json = await respuesta.json()
+    setPublicacion(json.publicacion)
+  }
 
+  // Se utiliza useEffect para que traiga los artículos y la publicación al cargar el componente
   useEffect(() => {
-    const traerArticulos = fetchArticulos()
+    fetchArticulos()
+    fetchPublicacion()
   }, [])
 
   return (
@@ -34,15 +45,16 @@ const Home = () => {
               {/* Las publicaciones del blog quedan a la izquierda utilizando la mitad de la pantalla */}
               <div className='col-md-6' id='Contenedor-publicaciones-blog'>
                 <div className='row' >
+                  {/* Recorremos todos los artículos que se trajeron desde el servidor y creamos cada artículo */}
                   {
                     articulos.map((articulo) => (
                       <div key={articulo.ID_Articulos} className="article-card col-md-6">
                         <img src={articulo.Imagen_Articulos_Ruta} alt={articulo.Nombre_Articulo} />
                         <h3>{articulo.Nombre_Articulo}</h3>
                         <p>{articulo.Descripcion_Articulos}</p>
-                        <button>
-                          <a href={articulo.Link_Ref_Articulos} target='_blank'>Ver más</a>
-                        </button>
+                        <a href={articulo.Link_Ref_Articulos} target='_blank'>
+                          <button>Ver más</button>
+                        </a>
                       </div>
                     ))
                   }
@@ -53,13 +65,20 @@ const Home = () => {
               {/* La última venta queda a la derecha utilizando la otra mitad de la pantalla */}
               <div className='col-md-6' id="Contenedor-ultima-venta">
                 <div className="article-card large">
-                  <img src="https://laropaamericana.cl/wp-content/uploads/2023/04/Cortavientos_De_Marca_Usado_La_Ropa_Americana_-Ropa_Usada_De_Marca_Santiago_Ropa_Americana_Online-89-1.jpg" alt="Nuevo! Chaqueta impermeable - L" />
-                  <h3>¡Nuevo! Chaqueta impermeable - L</h3>
-                  <p>Se regala chaqueta, marca Mountain Hardwear de hombre, sin uso. Entrega en metros a convenir. Contacto solo por correo.</p>
-                  <div className="buttons">
-                    <button>Contactar</button>
-                    <button>Ver más</button>
-                  </div>
+                  {/* Si es que el servidor nos devuelve una publicación, la muestra */}
+                  {
+                    publicacion && (
+                      <Fragment>
+                        <img src={publicacion.Imagen_Publicacion_Rutas} alt={`Nuevo! ${publicacion.Nombre_Publicacion} - L`} />
+                        <h3>¡Nuevo! {publicacion.Nombre_Publicacion} - L</h3>
+                        <p>Se regala chaqueta, marca Mountain Hardwear de hombre, sin uso. Entrega en metros a convenir. Contacto solo por correo.</p>
+                        <div className="buttons">
+                          <button>Contactar</button>
+                          <Link to='/Ventas'><button>Ver más</button></Link>
+                        </div>
+                      </Fragment>
+                    )
+                  }
                 </div>
               </div>
             </div>
