@@ -22,7 +22,7 @@ module.exports.login = (req, res) => {
                     }
                     
                     if (isMatch) { // Si las contraseñas coinciden...
-                        const token = jwt.sign({ username }, "Stack", { expiresIn: "60m" }); // Genera un token JWT que expira en 3 minutos.
+                        const token = jwt.sign({ username }, "Stack", { expiresIn: "1m" }); // Genera un token JWT que expira en 3 minutos.
                         res.send({ token }); // Envía el token como respuesta.
                     } else {
                         console.log('wrong password'); // Si las contraseñas no coinciden, imprime un mensaje en la consola.

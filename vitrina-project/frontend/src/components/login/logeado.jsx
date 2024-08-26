@@ -20,6 +20,10 @@ function Logeado({ setIsAuthenticated }) {
     const checkToken = () => {
       console.log('Iniciando verificación del token...');
       const token = localStorage.getItem('token');
+
+      // **Línea añadida**: Verifica si ya se recargó la página
+      const hasReloaded = sessionStorage.getItem('hasReloaded'); 
+
       if (token) {
         console.log('Token encontrado:', token);
         const decodedToken = parseJwt(token);
@@ -31,7 +35,12 @@ function Logeado({ setIsAuthenticated }) {
             console.log('El token ha expirado.');
             setIsAuthenticated(false);
             localStorage.removeItem('token');
-            window.location.reload(); // Recargar la página si el token ha expirado
+
+            // **Líneas añadidas/modificadas**: Verifica si ya se recargó y marca la recarga
+            if (!hasReloaded) {
+              sessionStorage.setItem('hasReloaded', 'true'); // Marca que ya se ha recargado
+              window.location.reload(); // Recarga la página
+            }
           } else {
             console.log('El token es válido.');
             setIsAuthenticated(true);
@@ -39,18 +48,28 @@ function Logeado({ setIsAuthenticated }) {
         } else {
           console.log('El token es inválido.');
           setIsAuthenticated(false);
-          window.location.reload(); // Recargar la página si el token es inválido
+
+          // **Líneas añadidas/modificadas**: Verifica si ya se recargó y marca la recarga
+          if (!hasReloaded) {
+            sessionStorage.setItem('hasReloaded', 'true'); // Marca que ya se ha recargado
+            window.location.reload(); // Recarga la página
+          }
         }
       } else {
         console.log('No se encontró ningún token.');
         setIsAuthenticated(false);
-        window.location.reload(); // Recargar la página si no hay token
+
+        // **Líneas añadidas/modificadas**: Verifica si ya se recargó y marca la recarga
+        if (!hasReloaded) {
+          sessionStorage.setItem('hasReloaded', 'true'); // Marca que ya se ha recargado
+          window.location.reload(); // Recarga la página
+        }
       }
     };
 
     checkToken(); // Verificar token inmediatamente al montar el componente
 
-    const intervalId = setInterval(checkToken, 60000); // Verificar cada 60 segundos
+    const intervalId = setInterval(checkToken, 5000); // Verificar cada 60 segundos
 
     return () => clearInterval(intervalId); // Limpiar intervalo al desmontar el componente
   }, [setIsAuthenticated]);

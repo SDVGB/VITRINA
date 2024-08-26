@@ -47,7 +47,7 @@ function App() {
 
   return (
     <div id="root">
-      {/* Alerta de confirmacion */}
+      {/* Alerta de confirmación */}
       {showConfirmation && (
         <div className="alert alert-success text-center" role="alert">
           Producto agregado al carrito con éxito
@@ -57,7 +57,12 @@ function App() {
       <div className="main-content">
         {isAuthenticated && <Logeado setIsAuthenticated={setIsAuthenticated} />}
         {/* Se monta Logeado en todas las rutas si el usuario está autenticado */}
-        <Navbar onLoginClick={handleLoginClick} isAuthenticated={isAuthenticated} cartItemCount={totalItemsInCart} />
+        <Navbar 
+          onLoginClick={handleLoginClick} 
+          isAuthenticated={isAuthenticated} 
+          cartItemCount={totalItemsInCart} 
+          setIsAuthenticated={setIsAuthenticated} // Pasa setIsAuthenticated como prop
+        />
         <LoginModal show={showModal} handleClose={handleCloseModal} setIsAuthenticated={setIsAuthenticated} />
 
         <Routes>
