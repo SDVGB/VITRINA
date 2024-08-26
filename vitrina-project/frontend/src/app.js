@@ -11,7 +11,7 @@ import Logeado from '../src/components/login/logeado.jsx';
 import LoginModal from '../src/components/login/loginmodal.jsx';
 import Carrito from '../src/components/Carrito/Carrito.jsx';
 import ProtectedRoute from '../src/components/nav/protectedRoute.jsx';  // Importa el componente de ruta protegida
-import Dashboard from './components/protected-Routes/Dashboard.jsx';  // Importa el nuevo componente seguro
+import Publicaciones from '../src/components/protected-Routes/Publicaciones.jsx';  // Importa el nuevo componente seguro
 import Notificaciones from './components/Notificaciones/Notificaciones.jsx';  // Importa el componente Notificaciones
 import Perfil from './components/Perfil/Perfil.jsx'; 
 import { useCart } from './components/Carrito/useCart.js';  
@@ -83,7 +83,7 @@ function App() {
             />
           } />
           {/* Ruta Protegida */}
-          <Route path="/dashboard" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Dashboard /></ProtectedRoute>} />
+          <Route path="/Publicaciones" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Publicaciones /></ProtectedRoute>} />
         </Routes>
       </div>
 

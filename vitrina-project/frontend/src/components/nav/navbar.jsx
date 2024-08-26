@@ -45,7 +45,6 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticat
 
             {isAuthenticated && (
               <>
-                <li><Link to="/dashboard" onClick={toggleMenu}>Dashboard</Link></li>
                 <div className="navbar-icons">
                   <div className="btn-group" role="group">
                     <button
