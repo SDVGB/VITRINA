@@ -4,15 +4,14 @@ import MainContentDonaciones from '../components/Main-Donaciones/MainContentDona
 
 
 // Componente principal de la aplicación
-const donaciones = () => {
+const Donaciones = ({ handleAddToCart }) => {
   return (
-    
     <div className="donaciones">
       <div style={{ minHeight: 'calc(100vh - 120px)' }}>
-        <MainContentDonaciones />
+        <MainContentDonaciones handleAddToCart={handleAddToCart} />
       </div>
     </div>
   );
 };
 
-export default donaciones
+export default Donaciones;
