@@ -2,7 +2,7 @@
 const connection = require('../models/db');
 
 // Función para traer artículos
-const getArticulos = (request, response) => {
+module.exports.getArticulos = (request, response) => {
     const parametros = request.query
     let consult = "SELECT * FROM Articulos"
     // Si dentro de los parámetros de la consulta viene sort, se ordenan de acuerdo a la indicación y el orden que indique
@@ -27,8 +27,4 @@ const getArticulos = (request, response) => {
     } catch (error) {
         response.json({ error: error })
     }
-}
-
-module.exports = {
-    getArticulos
 }
