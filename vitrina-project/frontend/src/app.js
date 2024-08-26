@@ -10,9 +10,9 @@ import Donaciones from '../src/pages/donaciones.js';
 import Logeado from '../src/components/login/logeado.jsx';
 import LoginModal from '../src/components/login/loginmodal.jsx';
 import Carrito from '../src/components/Carrito/Carrito.jsx';
-import ProtectedRoute from '../src/components/nav/protectedRoute.jsx';  // Importa el componente de ruta protegida
-import Publicaciones from '../src/components/protected-Routes/Publicaciones.jsx';  // Importa el nuevo componente seguro
-import Notificaciones from './components/Notificaciones/Notificaciones.jsx';  // Importa el componente Notificaciones
+import ProtectedRoute from '../src/components/nav/protectedRoute.jsx';
+import Publicaciones from '../src/components/protected-Routes/Publicaciones.jsx';
+import Notificaciones from './components/Notificaciones/Notificaciones.jsx';
 import Perfil from './components/Perfil/Perfil.jsx'; 
 import { useCart } from './components/Carrito/useCart.js';  
 
@@ -56,12 +56,11 @@ function App() {
 
       <div className="main-content">
         {isAuthenticated && <Logeado setIsAuthenticated={setIsAuthenticated} />}
-        {/* Se monta Logeado en todas las rutas si el usuario está autenticado */}
         <Navbar 
           onLoginClick={handleLoginClick} 
           isAuthenticated={isAuthenticated} 
           cartItemCount={totalItemsInCart} 
-          setIsAuthenticated={setIsAuthenticated} // Pasa setIsAuthenticated como prop
+          setIsAuthenticated={setIsAuthenticated} 
         />
         <LoginModal show={showModal} handleClose={handleCloseModal} setIsAuthenticated={setIsAuthenticated} />
 
@@ -70,9 +69,9 @@ function App() {
           <Route path="/Blog" element={<Blog isAuthenticated={isAuthenticated} />} />
           <Route path="/Ventas" element={<Ventas isAuthenticated={isAuthenticated} handleAddToCart={handleAddToCart} />} />
           <Route path="/Quienes-somos" element={<AboutUs isAuthenticated={isAuthenticated} />} />
-          <Route path="/Donaciones" element={<Donaciones isAuthenticated={isAuthenticated} />} />
-          <Route path="/notificaciones" element={<Notificaciones />} /> {/* Ruta para Notificaciones */}
-          <Route path="/perfil" element={<Perfil />} /> {/* Ruta para Perfil */}
+          <Route path="/Donaciones" element={<Donaciones isAuthenticated={isAuthenticated} handleAddToCart={handleAddToCart} />} /> {/* Pasar handleAddToCart a Donaciones */}
+          <Route path="/notificaciones" element={<Notificaciones />} />
+          <Route path="/perfil" element={<Perfil />} />
           <Route path="/*" element={<Home isAuthenticated={isAuthenticated} />} />
 
           <Route path="/carrito" element={
@@ -82,7 +81,6 @@ function App() {
               handleDecrement={handleDecrement}
             />
           } />
-          {/* Ruta Protegida */}
           <Route path="/Publicaciones" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Publicaciones /></ProtectedRoute>} />
         </Routes>
       </div>
