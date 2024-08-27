@@ -23,6 +23,9 @@ app.use(fileUpload()); // Asegura que el servidor pueda manejar archivos
 // Middleware para servir archivos estáticos desde la carpeta uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Middleware para servir archivos estáticos desde la carpeta assets en controllers usando __dirname
+app.use('/assets', express.static(path.join(__dirname, 'controllers', 'assets')));
+
 // Uso de las rutas definidas en endPoints.js
 app.use('/', routes);
 

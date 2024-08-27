@@ -40,21 +40,18 @@ const ModalDetailDonaciones = ({ show, handleClose, product, handleAddToCart }) 
     <>
       <Modal show={show} onHide={handleClose} size="xl" centered>
         <Modal.Header closeButton>
-          <Modal.Title>{product.name}</Modal.Title>
+          <Modal.Title>{product.Nombre_Publicacion}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="modal-content">
             <div className="image-section">
-              <img src={product.img} alt={product.name} className="product-image" />
+              <img src={`http://localhost:5000${product.Imagen_Publicacion_Rutas}`} alt={product.Nombre_Publicacion} className="product-image" />
             </div>
             <div className="details-section">
-              <h3>{product.name}</h3>
+              <h3>{product.Nombre_Publicacion}</h3>
               <p className="price">GRATIS</p>
               <div className="size-section">
-                <p>Tamaño: <strong>Large</strong></p>
-                <div className="size-options">
-                  <Button variant="outline-secondary" size="sm">L</Button>
-                </div>
+                <p>Tamaño: <strong>{product.ID_Talla || 'No especificado'}</strong></p>
               </div>
               <div className="d-flex justify-content-between">
                 <Button 
@@ -69,7 +66,7 @@ const ModalDetailDonaciones = ({ show, handleClose, product, handleAddToCart }) 
               </div>
               <div className="description-section">
                 <p className="description-title">Descripción</p>
-                <p className="description-text">{product.description || 'Descripción no disponible'}</p>
+                <p className="description-text">{product.Descripcion_Publicacion || 'Descripción no disponible'}</p>
               </div>
             </div>
           </div>
@@ -111,7 +108,7 @@ const ModalDetailDonaciones = ({ show, handleClose, product, handleAddToCart }) 
                 rows={3}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                defaultValue={`Me interesa el anuncio "${product.name}" que tienes publicado. Por favor comunícate conmigo.`}
+                defaultValue={`Me interesa el anuncio "${product.Nombre_Publicacion}" que tienes publicado. Por favor comunícate conmigo.`}
               />
             </Form.Group>
 
