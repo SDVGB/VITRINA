@@ -28,7 +28,7 @@ const Carrito = ({ cart, handleIncrement, handleDecrement }) => {
         ))}
       </ul>
       <h3>Total de la compra: ${total.toLocaleString()}</h3>
-      <button className="btn btn-primary">Contactarse!</button>
+      <button className="btn btn-primary1">Contactarse!</button>
     </div>
   );
 };
