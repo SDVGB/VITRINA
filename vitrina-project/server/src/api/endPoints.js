@@ -11,6 +11,7 @@ const { tiposPublicacion} = require('../controllers/tiposPublicacionController')
 const { generos} = require('../controllers/generosController');
 const { edades} = require('../controllers/edadesController');
 const { tallas} = require('../controllers/tallasController');
+const { getAllPublicaciones } = require('../controllers/getAllPublicaciones');
 
 router.post('/register', register);
 router.post('/login', login);
@@ -28,5 +29,6 @@ router.get('/tallas', tallas);
 // Se agregan los endpoint para traer artículos y la última publicación
 router.get('/articulos', getArticulos)
 router.get('/publicacion', getPublicacion)
+router.get('/publicaciones', getAllPublicaciones);
 
 module.exports = router;

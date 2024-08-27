@@ -6,10 +6,10 @@ export const useCart = () => {
 
   const handleAddToCart = (product) => {
     setCart(prevCart => {
-      const existingProduct = prevCart.find(item => item.id === product.id);
+      const existingProduct = prevCart.find(item => item.ID_Publicacion === product.ID_Publicacion);
       if (existingProduct) {
         return prevCart.map(item =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.ID_Publicacion === product.ID_Publicacion ? { ...item, quantity: item.quantity + 1 } : item
         );
       } else {
         return [...prevCart, { ...product, quantity: 1 }];
@@ -22,19 +22,19 @@ export const useCart = () => {
     }, 3000);
   };
 
-  const handleIncrement = (id) => {
+  const handleIncrement = (ID_Publicacion) => {
     setCart(prevCart =>
       prevCart.map(item =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        item.ID_Publicacion === ID_Publicacion ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
   };
 
-  const handleDecrement = (id) => {
+  const handleDecrement = (ID_Publicacion) => {
     setCart(prevCart =>
       prevCart
         .map(item =>
-          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+          item.ID_Publicacion === ID_Publicacion ? { ...item, quantity: item.quantity - 1 } : item
         )
         .filter(item => item.quantity > 0)
     );
