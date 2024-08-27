@@ -6,12 +6,25 @@ import notification from '../../assets/icons/notification.png';
 import './navbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated }) => {
+const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticated }) => {  // Asegúrate de recibir setIsAuthenticated aquí
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const handleLogout = () => {
+    // Eliminar el token del localStorage para matar la sesión
+    localStorage.removeItem('authToken');
+
+    // Actualizar el estado de autenticación a false
+    setIsAuthenticated(false);
+
+    // Redirigir al usuario a la página de inicio
+    navigate('/');
   };
 
   return (
@@ -32,7 +45,6 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated }) => {
 
             {isAuthenticated && (
               <>
-                <li><Link to="/dashboard" onClick={toggleMenu}>Dashboard</Link></li>
                 <div className="navbar-icons">
                   <div className="btn-group" role="group">
                     <button
@@ -55,8 +67,8 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated }) => {
                       <img src={nuevapublicacion} alt="logo-publicaciones" className='logoPublicaciones' />
                     </button>
                     <ul className="dropdown-menu">
-                      <li><Link className="dropdown-item" to="/Publicaciones">Subir Articulo</Link></li>
-                      <li><Link className="dropdown-item" to="/Publicaciones">Crear publicación</Link></li>
+                      <li><Link className="dropdown-item" to="/Publicaciones">Subir Artículo</Link></li>
+                      <li><Link className="dropdown-item" to="/Publicaciones">Crear Publicación</Link></li>
                     </ul>
                   </div>
                   <div className="btn-group" role="group">
@@ -71,7 +83,18 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated }) => {
                       <li><Link className="dropdown-item" to="/perfil">Mi perfil</Link></li>
                       <li><Link className="dropdown-item" to="/intercambios">Mis intercambios</Link></li>
                       <li><Link className="dropdown-item" to="/mensajeria">Buzón</Link></li>
-                      <li><button className="dropdown-item" onClick={() => console.log('Cerrar sesión')}>Cerrar sesión</button></li>
+                      <li>
+                        <button
+                          className="dropdown-item"
+                          onClick={() => {
+                            handleLogout();          // Llama a la función handleLogout para cerrar sesión
+                            console.log('Cerrar sesión');  // Imprime en la consola un mensaje indicando que se cerró la sesión
+                          }}
+                        >
+                          Cerrar sesión
+                        </button>
+                      </li>
+
                     </ul>
                   </div>
                 </div>

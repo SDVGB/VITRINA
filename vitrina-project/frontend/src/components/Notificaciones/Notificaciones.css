@@ -1,66 +1,72 @@
 /* Contenedor principal */
 .notificaciones-container {
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
-  }
-  
-  /* Título de la sección */
-  .notificaciones-container h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  /* Lista de notificaciones */
-  .notificaciones-container ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  /* Elementos de la lista de notificaciones */
-  .notificaciones-container ul li {
-    padding: 15px;
-    border-bottom: 1px solid #eaeaea;
-    color: #555;
-    font-size: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  /* Estilo para el texto de la notificación */
-  .notificaciones-container ul li span {
-    flex-grow: 1;
-  }
-  
-  /* Estilo para la fecha de la notificación */
-  .notificaciones-container ul li time {
-    color: #999;
-    font-size: 14px;
-    text-align: right;
-    white-space: nowrap;
-  }
-  
-  /* Último elemento de la lista sin borde */
-  .notificaciones-container ul li:last-child {
-    border-bottom: none;
-  }
-  
-  /* Estilo para el mensaje de "No tienes notificaciones" */
-  .no-notificaciones {
-    text-align: center;
-    color: #888;
-    font-size: 18px;
-    padding: 20px;
-  }
-  
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f9f9f9; /* Color de fondo más suave */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Título de la sección */
+.notificaciones-container h2 {
+  font-size: 26px; /* Tamaño de fuente ligeramente más pequeño */
+  margin-bottom: 15px; /* Espacio reducido abajo */
+  color: #222; /* Color más oscuro */
+  text-align: center;
+  border-bottom: 3px solid #2AA0CD; /* Color azul para el borde */
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Lista de notificaciones */
+.notificaciones-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Elementos de la lista de notificaciones */
+.notificaciones-container ul li {
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0; /* Borde más claro */
+  color: #333; /* Texto más oscuro para mejor legibilidad */
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s; /* Transición suave al pasar el ratón */
+}
+
+/* Estilo para el texto de la notificación */
+.notificaciones-container ul li span {
+  flex-grow: 1;
+}
+
+/* Estilo para la fecha de la notificación */
+.notificaciones-container ul li time {
+  color: #777; /* Color más suave para la fecha */
+  font-size: 14px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Último elemento de la lista sin borde */
+.notificaciones-container ul li:last-child {
+  border-bottom: none;
+}
+
+/* Hover para los elementos de la lista */
+.notificaciones-container ul li:hover {
+  background-color: #f0f0f0; /* Color de fondo al pasar el ratón */
+}
+
+/* Estilo para el mensaje de "No tienes notificaciones" */
+.no-notificaciones {
+  text-align: center;
+  color: #666; /* Color de texto más suave */
+  font-size: 20px; /* Tamaño de fuente ligeramente más grande */
+  padding: 20px;
+  font-style: italic; /* Estilo en cursiva para diferenciar */
+}

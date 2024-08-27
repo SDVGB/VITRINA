@@ -80,15 +80,21 @@
 }
 
 .add-to-cart, .contact-seller {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
+  background-color: #2AA0CD !important;
+  color: white !important;
+  padding: 12px 20px;
+  border: none !important;
+  border-radius: 4px !important;
+  text-align: center !important;
+  font-size: 16px !important;
+  flex-grow: 1; /* Ambos botones crecen de manera igual */
+  flex-basis: 0; /* Ambos botones inician con la misma base */
+  height: 50px; /* Establece una altura fija */
+  line-height: 26px; /* Asegura que el texto esté centrado verticalmente */
 }
 
 .add-to-cart:hover, .contact-seller:hover {
-  background-color: #0056b3;
+  background-color: #1679a0 !important; /* Cambiar color al pasar el mouse */
 }
 
 .description-section {
@@ -125,5 +131,9 @@
   .button-container {
     flex-direction: column;
     gap: 10px; /* Espacio entre botones en pantallas pequeñas */
+  }
+
+  .add-to-cart, .contact-seller {
+    max-width: 100%; /* Permitir que los botones se extiendan completamente en pantallas pequeñas */
   }
 }
