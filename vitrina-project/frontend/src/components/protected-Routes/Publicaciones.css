@@ -1,0 +1,93 @@
+.form-container {
+    background-color: #e3ecf3;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.form-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #1f2d3d;
+    text-align: center;
+}
+
+.date-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.date-container input[type="text"] {
+    background-color: #f2f2f2;
+    border: none;
+    font-size: 14px;
+    color: #333;
+    text-align: right;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #1f2d3d;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="file"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-group input[type="text"]:disabled {
+    background-color: #f2f2f2;
+}
+
+.form-inline-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-inline-group .form-group {
+    flex: 0 0 48%;
+}
+
+.form-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1f2d3d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background-color: #15233a;
+}
