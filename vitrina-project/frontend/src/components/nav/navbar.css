@@ -84,13 +84,14 @@
 
 .logoPublicaciones,
 .logoUsuario {
-  margin-left: 50px;
+  margin-left: 60px;
   width: 30px;
   height: 30px;
   display: flex;
 }
-.logoNotificaciones{
-  margin-left: 50px;
+
+.logoNotificaciones {
+  margin-left: 40px;
   width: 40px;
   height: 40px;
 }
@@ -109,7 +110,7 @@
   justify-content: center; /* Centrar horizontalmente el contenido */
 }
 
-.btn-group .btn-primary {
+.btn-group .btn-primary2 {
   width: 20px;  /* Ajusta el ancho según sea necesario */
   height: 20px; /* Ajusta la altura según sea necesario */
   padding: 0; /* Ajusta el padding interno */
@@ -121,7 +122,11 @@
   background-color: transparent; /* Fondo transparente */
 }
 
-.btn-group .btn-primary.dropdown-toggle {
+.btn-group .btn-primary2.dropdown-toggle::after {
+  display: none; /* Hace la flecha invisible */
+}
+
+.btn-group .btn-primary2.dropdown-toggle {
   width: 24px;  /* Ajusta el ancho del botón */
   height: 24px; /* Ajusta la altura del botón */
   padding: 0; /* Elimina el padding interno */
@@ -136,6 +141,12 @@
 
 .btn-group .dropdown-menu {
   margin-top: 30px; /* Ajusta este valor según la distancia que quieras */
+}
+
+.btn-primary2 {
+  width: 10px;
+  height: 10px;
+  background-color: #2AA0CD;
 }
 
 /* Estilos responsivos */
@@ -205,16 +216,13 @@
   }
 }
 
-
-
-
-
-.BlogoUsuario{
+.BlogoUsuario {
   border: none !important;
   width: 20px;
   height: 20px;
   border-radius: 20px;
 }
+
 /* Estilos responsivos */
 @media (max-width: 768px) {
   .navbar-menu {
