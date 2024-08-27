@@ -22,11 +22,11 @@ const verifyToken = (req, res, next) => {
     });
 };
 
-// Controlador para manejar la creación de una publicación con imagen
+// Controlador para manejar la creación de una publicación con imagen y precio
 module.exports.postcreation = [verifyToken, (req, res) => {
     const {
         Nombre_Publicacion, Cantidad, Descripcion_Publicacion,
-        ID_Prenda, ID_Tipo_Publicacion, ID_Genero, ID_Talla, ID_Edad
+        ID_Prenda, ID_Tipo_Publicacion, ID_Genero, ID_Talla, ID_Edad, Precio
     } = req.body;
 
     const Fecha_Publicacion = new Date().toISOString().slice(0, 10);
@@ -65,19 +65,25 @@ module.exports.postcreation = [verifyToken, (req, res) => {
             if (result.length > 0) {
                 const RUT = result[0].ID_Rut; // Este es el RUT del usuario logueado
 
-                // Inserción de los datos en la tabla Publicacion
+                // Convertir el precio a un número entero, manejando posibles NaN
+                let precioInt = parseInt(Precio.replace(/[^0-9]/g, ''), 10);
+                if (isNaN(precioInt)) {
+                    precioInt = 0; // O maneja de otra manera si el precio no es válido
+                }
+
+                // Inserción de los datos en la tabla Publicacion, incluyendo el campo Precio como un entero
                 const query = `
                     INSERT INTO Publicacion (
                         Nombre_Publicacion, Fecha_Publicacion, Cantidad, Descripcion_Publicacion,
                         ID_Prenda, ID_Rut, ID_Tipo_Publicacion, ID_Genero, ID_Talla, ID_Edad,
-                        Imagen_Publicacion_Rutas
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        Imagen_Publicacion_Rutas, Precio
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 `;
 
                 connection.query(query, [
                     Nombre_Publicacion, Fecha_Publicacion, Cantidad, Descripcion_Publicacion,
                     ID_Prenda, RUT, ID_Tipo_Publicacion, ID_Genero, ID_Talla, ID_Edad,
-                    imageUrl
+                    imageUrl, precioInt
                 ], (err, result) => {
                     if (err) {
                         console.error('Error insertando datos:', err);
@@ -91,3 +97,4 @@ module.exports.postcreation = [verifyToken, (req, res) => {
         });
     });
 }];
+
