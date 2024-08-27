@@ -27,8 +27,7 @@ import imgd23 from '../../assets/img/imgd23.jpg';
 import ModalDetailDonaciones from '../Main-Donaciones/modal/ModalDetailDonaciones';
 import './ProductListDonaciones.css';
 
-
-const ProductListDonaciones = () => {
+const ProductListDonaciones = ({ handleAddToCart }) => {
   const [show, setShow] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,12 +42,12 @@ const ProductListDonaciones = () => {
   const products = [
     { id: 1, name: 'Conjuntos de short y crop top', img: imgd01 },
     { id: 2, name: 'Blazer negro', img: imgd02 },
-    { id: 3, name: 'Camiza verano', img: imgd03 },
+    { id: 3, name: 'Camisa verano', img: imgd03 },
     { id: 4, name: 'Vestido vintage', img: imgd04 },
     { id: 5, name: 'Polera tipo polo beige', img: imgd05 },
     { id: 6, name: 'Polera a rayas', img: imgd06 },
     { id: 7, name: 'Polera tipo polo roja', img: imgd07 },
-    { id: 8, name: 'Conjunto deportipo verano', img: imgd08},
+    { id: 8, name: 'Conjunto deportivo verano', img: imgd08 },
     { id: 9, name: 'Conjunto vintage', img: imgd09 },
     { id: 10, name: 'Conjunto niña', img: imgd10 },
     { id: 11, name: 'Conjunto deportivo verano', img: imgd11 },
@@ -56,13 +55,14 @@ const ProductListDonaciones = () => {
     { id: 13, name: 'Conjunto vintage', img: imgd13 },
     { id: 14, name: 'Crop top manga larga', img: imgd14 },
     { id: 15, name: 'Conjunto niña', img: imgd15 },
-    { id: 16, name: 'FConjunto niña', img: imgd16 },
+    { id: 16, name: 'Conjunto niña', img: imgd16 },
     { id: 17, name: 'Blusa/vestido', img: imgd17 },
-    { id: 18, name: 'Blazer', img: imgd18 }, 
-    { id: 19, name: 'Chaqueta delgada', img: imgd19 }, 
-    { id: 21, name: 'Chaqueta', img: imgd20 }, 
-    { id: 22, name: 'Falda larga negra', img: imgd21 },
-    { id: 23, name: 'Blazer gris', img: imgd22 } 
+    { id: 18, name: 'Blazer', img: imgd18 },
+    { id: 19, name: 'Chaqueta delgada', img: imgd19 },
+    { id: 20, name: 'Chaqueta', img: imgd20 },
+    { id: 21, name: 'Falda larga negra', img: imgd21 },
+    { id: 22, name: 'Blazer gris', img: imgd22 },
+    { id: 23, name: 'Blazer gris', img: imgd23 }
   ];
 
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -70,7 +70,6 @@ const ProductListDonaciones = () => {
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   const nextPage = () => setCurrentPage(prevPage => Math.min(prevPage + 1, pageNumbers.length));
   const prevPage = () => setCurrentPage(prevPage => Math.max(prevPage - 1, 1));
 
@@ -107,7 +106,14 @@ const ProductListDonaciones = () => {
         <Pagination.Next onClick={nextPage} disabled={currentPage === pageNumbers.length} />
       </Pagination>
 
-      <ModalDetailDonaciones show={show} handleClose={handleClose} product={selectedProduct} />
+      {selectedProduct && (
+        <ModalDetailDonaciones
+          show={show}
+          handleClose={handleClose}
+          product={selectedProduct}
+          handleAddToCart={handleAddToCart} // Pasar la función de agregar al carrito
+        />
+      )}
     </div>
   );
 };
