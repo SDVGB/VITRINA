@@ -1,40 +1,46 @@
-.custom-modal .modal-dialog {
-    max-width: 800px;
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Fondo claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-.custom-modal .modal-body {
-    padding: 2rem;
-    background-color: #f4f7f9;
+/* Estilo para el formulario */
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Ancho fijo para el formulario */
+    box-sizing: border-box;
 }
 
-.modal-header {
-    border-bottom: none;
+/* Estilo para los contenedores de entrada (correo, contraseña, etc.) */
+.input-container {
+    width: 100%; /* Asegura que el contenedor de entrada ocupe todo el ancho del formulario */
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total del contenedor */
 }
 
-.modal-header .close {
-    font-size: 1.5rem;
+/* Estilo para los botones */
+.button {
+    background-color: #2AA0CD !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px !important;
+    text-align: center !important;
+    width: 100% !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease !important;
+    box-sizing: border-box !important; /* Asegura que el padding no afecte el tamaño del botón */
 }
 
-.text-primary {
-    color: #0056b3;
-    /* Color azul para el texto de 'Iniciar sesión' */
-}
-
-.text-secondary {
-    color: #343a40;
-    /* Color oscuro para el texto de 'Crear cuenta' */
-}
-
-button.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-button.btn-dark {
-    background-color: #343a40;
-    border-color: #343a40;
-}
-
-button.btn-outline-secondary {
-    border-color: #ced4da;
+/* Cambio de color al pasar el mouse */
+.button:hover {
+    background-color: #1679a0 !important;
 }
