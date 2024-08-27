@@ -76,14 +76,16 @@ const ModalDetail = ({ show, handleClose, product, handleAddToCart }) => {
               <div className="size-section">
                 <p>Tamaño: <strong>{product.ID_Talla || 'No especificado'}</strong></p>
               </div>
+
               <div className="d-flex justify-content-between">
                 <Button 
                   variant="primary" 
                   className="add-to-cart" 
                   onClick={() => handleAddToCart(product)}>
+
                   Agregar al Carrito
                 </Button>
-                <Button variant="primary" onClick={handleContactClick}>
+                <Button variant="primary" className="contact-seller" onClick={handleContactClick}>
                   Contactar
                 </Button>
               </div>

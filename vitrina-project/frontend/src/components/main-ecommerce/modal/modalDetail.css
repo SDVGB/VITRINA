@@ -1,28 +1,29 @@
 /* Modal */
 .modal-dialog {
-  max-width: 80%; /* Ancho del modal */
+  max-width: 80%;
 }
 
 .modal-content {
   display: flex;
-  flex-direction: row; /* Secciones en fila */
+  flex-direction: row;
   padding: 20px;
 }
 
 .modal-header {
-  display: flex;
-  justify-content: flex-end; /* Alinea todo el contenido al final del encabezado (a la derecha) */
-  align-items: center; /* Centra verticalmente el título y el botón de cierre */
-  border-bottom: none; /* Opcional: quita el borde inferior */
-  padding: 0 20px; /* Espaciado interno del encabezado */
+  position: relative;
+  padding: 0 20px;
+  border-bottom: none;
 }
 
-.modal-header .modal-title {
+.modal-title {
   font-size: 22px;
-  margin-right: 15px; /* Espacio entre el título y el botón de cierre */
+  margin-right: 15px;
 }
 
-.modal-header .close {
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
   font-size: 24px;
   color: #333;
   cursor: pointer;
@@ -32,7 +33,7 @@
 }
 
 .image-section {
-  flex: 1.2; /* Aumenta la imagen */
+  flex: 1.2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +42,7 @@
 
 .product-image {
   width: 100%;
-  max-width: 400px; 
+  max-width: 400px;
 }
 
 .details-section {
@@ -72,20 +73,22 @@
   gap: 10px;
 }
 
-.add-to-cart {
-  background-color: #074f5c;
-  border: none;
-  color: white;
+.button-container {
+  display: flex;
+  gap: 15px; /* Espacio entre los botones */
   margin-bottom: 10px;
-  padding: 10px 12px;
-  font-size: 18px;
-  width: 250px;
-  height: 50px;
-  transition: background-color 0.3s ease;
 }
 
-.add-to-cart:hover {
-  background-color: #063d48;
+.add-to-cart, .contact-seller {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+}
+
+.add-to-cart:hover, .contact-seller:hover {
+  background-color: #0056b3;
 }
 
 .description-section {
@@ -107,7 +110,7 @@
 /* Responsivo */
 @media (max-width: 768px) {
   .modal-content {
-    flex-direction: column; /* Secciones en columna en pantallas pequeñas */
+    flex-direction: column;
   }
 
   .image-section {
@@ -117,5 +120,10 @@
 
   .details-section {
     text-align: center;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 10px; /* Espacio entre botones en pantallas pequeñas */
   }
 }
