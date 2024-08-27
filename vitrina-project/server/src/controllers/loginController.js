@@ -9,7 +9,7 @@ module.exports.login = (req, res) => {
     try {
         connection.query(consult, [username], (err, result) => { // Ejecuta la consulta SQL con el correo como parámetro.
             if (err) { 
-                res.send(err); // Si hay un error en la consulta, envía el error como respuesta.
+                return res.status(500).send(err); // Si hay un error en la consulta, envía el error como respuesta.
             }
             
             if (result.length > 0) { // Verifica si la consulta encontró algún usuario.
@@ -18,23 +18,31 @@ module.exports.login = (req, res) => {
                 // Compara la contraseña ingresada con la almacenada usando bcrypt.
                 bcrypt.compare(password, storedPassword, (err, isMatch) => {
                     if (err) {
-                        res.send(err); // Si hay un error durante la comparación, envía el error como respuesta.
+                        return res.status(500).send(err); // Si hay un error durante la comparación, envía el error como respuesta.
                     }
                     
                     if (isMatch) { // Si las contraseñas coinciden...
-                        const token = jwt.sign({ username }, "Stack", { expiresIn: "60m" }); // Genera un token JWT que expira en 3 minutos.
-                        res.send({ token }); // Envía el token como respuesta.
+                        // **Agregado para hacer funcionar las notificaciones**
+                        // Incluir el userId (RUT) en el token JWT
+                        const userId = result[0].ID_Rut; // Obtiene el ID del usuario (RUT)
+                        const token = jwt.sign({ username, userId }, "Stack", { expiresIn: "60m" }); // Genera un token JWT que expira en 60 minutos.
+
+                        // **Código original que se reemplazó**
+                        // const token = jwt.sign({ username }, "Stack", { expiresIn: "60m" }); // Genera un token JWT que expira en 60 minutos.
+                        // const userId = result[0].ID_Rut; // Obtiene el ID del usuario para enviarlo en la respuesta.
+                        
+                        res.status(200).send({ token, userId }); // Envía el token y el ID del usuario como respuesta.
                     } else {
-                        console.log('wrong password'); // Si las contraseñas no coinciden, imprime un mensaje en la consola.
-                        res.send({ message: 'wrong password' }); // Envía un mensaje indicando que la contraseña es incorrecta.
+                        console.log('Contraseña incorrecta'); // Si las contraseñas no coinciden, imprime un mensaje en la consola.
+                        res.status(401).send({ message: 'Contraseña incorrecta' }); // Envía un mensaje indicando que la contraseña es incorrecta.
                     }
                 });
             } else {
-                console.log('wrong user'); // Si no se encontró ningún usuario, imprime un mensaje en la consola.
-                res.send({ message: 'wrong user' }); // Envía un mensaje indicando que el usuario no existe.
+                console.log('Usuario no encontrado'); // Si no se encontró ningún usuario, imprime un mensaje en la consola.
+                res.status(404).send({ message: 'Usuario no encontrado' }); // Envía un mensaje indicando que el usuario no existe.
             }
         });
     } catch (e) {
-        res.send(e); // Si ocurre una excepción, envía el error como respuesta.
+        res.status(500).send(e); // Si ocurre una excepción, envía el error como respuesta.
     }
 };

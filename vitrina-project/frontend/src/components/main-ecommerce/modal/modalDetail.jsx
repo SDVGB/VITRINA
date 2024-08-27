@@ -16,11 +16,34 @@ const ModalDetail = ({ show, handleClose, product, handleAddToCart }) => {
     setShowContactForm(false);
   };
 
-  const handleSendMessage = (e) => {
+  const handleSendMessage = async (e) => {
     e.preventDefault();
-    console.log(`Mensaje enviado por ${name}: ${message}`);
-    console.log(`Teléfono: ${phoneNumber}`);
-    handleContactClose(); // Cerrar el formulario después de enviar el mensaje
+    try {
+      const response = await fetch('http://localhost:5000/enviar-solicitud-contacto', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ID_Publicacion: product.ID_Publicacion,
+          Nombre_Solicitante: name,
+          Apellido_Solicitante: 'Apellido',  // Cambia esto según cómo quieras manejar los apellidos
+          Correo_Solicitante: 'correo@example.com',  // Usa el correo del usuario autenticado
+          Contactame: phoneNumber,
+          Descripcion_Solicitud: message,
+        }),
+      });
+
+      if (response.ok) {
+        alert('Solicitud enviada correctamente.');
+        handleContactClose();
+      } else {
+        alert('Error al enviar la solicitud.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al enviar la solicitud.');
+    }
   };
 
   if (!product) {
@@ -49,7 +72,7 @@ const ModalDetail = ({ show, handleClose, product, handleAddToCart }) => {
             </div>
             <div className="details-section">
               <h3>{product.Nombre_Publicacion}</h3>
-              <p className="price">${product.price}</p>
+              <p className="price">GRATIS</p>
               <div className="size-section">
                 <p>Tamaño: <strong>{product.ID_Talla || 'No especificado'}</strong></p>
               </div>
