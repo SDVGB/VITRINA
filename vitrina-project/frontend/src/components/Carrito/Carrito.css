@@ -1,24 +1,75 @@
 .container {
-    margin-top: 2rem;
-  }
-  
-  .cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .item-image {
-    width: 200px;
-    margin-right: 10px;
-  }
-  
-  .btn {
-    margin-left: 0.5rem;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa; /* Fondo claro para diferenciar el carrito */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  }
-  .btn-primary{
-    margin: 30px;
-    padding: 15px;
-  }
-  
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.item-image {
+  width: 120px; /* Tamaño ajustado para las imágenes */
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+
+.list-group-item {
+  background-color: transparent; /* Fondo transparente para integrar con el contenedor */
+  border: none; /* Eliminar bordes adicionales */
+}
+
+.btn {
+  margin-left: 0.5rem;
+  background-color: #2AA0CD; /* Botón azul */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-danger {
+  background-color: #dc3545; /* Color rojo para el botón de decremento */
+}
+
+.btn-danger:hover {
+  background-color: #c82333; /* Oscurecer el rojo al pasar el cursor */
+}
+
+.btn-success {
+  background-color: #28a745; /* Color verde para el botón de incremento */
+}
+
+.btn-success:hover {
+  background-color: #218838; /* Oscurecer el verde al pasar el cursor */
+}
+
+.btn-primary {
+  margin: 2rem 0;
+  padding: 10px 20px;
+  background-color: #2AA0CD!important; /* Color personalizado para el botón */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Botón ancho completo */
+}
+
+
+.btn-primary:hover {
+  background-color: #1679a0 !important; /* Oscurecer azul al pasar el cursor */
+}
+
+h2, h3 {
+  margin-bottom: 1.5rem;
+  text-align: center; /* Centrando los encabezados */
+}

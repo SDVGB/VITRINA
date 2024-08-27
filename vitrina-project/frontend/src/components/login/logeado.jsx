@@ -44,6 +44,15 @@ function Logeado({ setIsAuthenticated }) {
           } else {
             console.log('El token es válido.');
             setIsAuthenticated(true);
+
+            // **Agregado para hacer funcionar las notificaciones**
+            // Almacena el RUT del usuario en el localStorage si el token es válido
+            const userId = decodedToken.userId; // Esto debe coincidir con el nombre del campo en tu token JWT
+            localStorage.setItem('usuarioActual', userId);
+
+            /* Código original que se reemplazó
+            localStorage.setItem('usuarioActual', 'a'); // Esto tenía un valor fijo 'a', pero ahora se usa el RUT del usuario real
+            */
           }
         } else {
           console.log('El token es inválido.');
@@ -58,6 +67,11 @@ function Logeado({ setIsAuthenticated }) {
       } else {
         console.log('No se encontró ningún token.');
         setIsAuthenticated(false);
+
+        /* Código original que se reemplazó
+        console.log('No se encontró ningún token.');
+        setIsAuthenticated(false);
+        */
 
         // **Líneas añadidas/modificadas**: Verifica si ya se recargó y marca la recarga
         if (!hasReloaded) {
