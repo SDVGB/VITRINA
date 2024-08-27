@@ -91,3 +91,18 @@
 .form-container button:hover {
     background-color: #15233a;
 }
+
+.error {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+
+
+input:required:invalid:focus,
+select:required:invalid:focus {
+    outline: none;
+    border: 2px solid orange;
+    box-shadow: 0 0 5px orange;
+}
