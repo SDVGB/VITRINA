@@ -1,3 +1,5 @@
+const connection = require('../models/db'); // Asegúrate de que la ruta sea correcta
+
 const getAllPublicaciones = (req, res) => {
     const { tipo } = req.query;
 
