@@ -41,7 +41,7 @@ const ProductListDonaciones = ({ handleAddToCart }) => {
     <div className="container mt-5">
       <div className="row">
         {currentProducts.map(product => (
-          <div className="col-md-3 mb-4" key={product.ID_Publicacion}>
+          <div className="col-md-3 mb-4 col-sm-6" key={product.ID_Publicacion}>
             <Card className="h-100">
               <Card.Img variant="top" src={`http://localhost:5000${product.Imagen_Publicacion_Rutas}`} />
               <Card.Body>
