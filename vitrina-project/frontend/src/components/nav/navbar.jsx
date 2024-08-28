@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import nuevapublicacion from '../../assets/icons/nuevapublicacion.png';
-import profile from '../../assets/icons/profile.jpg';
+import defaultProfile from '../../assets/img/default_profile.png';
 import notification from '../../assets/icons/notification.png';
 import './navbar.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticated, userRole }) => {
+const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticated, profileImage, setProfileImage }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -16,15 +17,19 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticat
   };
 
   const handleLogout = () => {
-    // Eliminar el token del localStorage para matar la sesión
     localStorage.removeItem('authToken');
-
-    // Actualizar el estado de autenticación a false
     setIsAuthenticated(false);
-
-    // Redirigir al usuario a la página de inicio
     navigate('/');
   };
+
+  useEffect(() => {
+    const savedProfileImage = localStorage.getItem('profileImage');
+    if (savedProfileImage) {
+      setProfileImage(savedProfileImage); 
+    } else {
+      setProfileImage(defaultProfile); 
+    }
+  }, [setProfileImage]);
 
   return (
     <div>
@@ -41,7 +46,6 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticat
             <li><Link to="/Ventas" onClick={toggleMenu}>Ventas</Link></li>
             <li><Link to="/Donaciones" onClick={toggleMenu}>Donaciones</Link></li>
             <li><Link to="/Quienes-somos" onClick={toggleMenu}>Quiénes Somos</Link></li>
-
             {isAuthenticated && (
               <>
                 <div className="navbar-icons">
@@ -80,7 +84,7 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticat
                       className="btn btn-primary2 dropdown-toggle"
                       data-bs-toggle="dropdown"
                       aria-expanded="false">
-                      <img src={profile} alt="logo-usuario" className='logoUsuario' />
+                      <img src={profileImage || defaultProfile} alt="logo-usuario" className='logoUsuario' />
                     </button>
                     <ul className="dropdown-menu">
                       <li><Link className="dropdown-item" to="/perfil">Mi perfil</Link></li>
@@ -89,11 +93,7 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticat
                       <li>
                         <button
                           className="dropdown-item"
-                          onClick={() => {
-                            handleLogout();          // Llama a la función handleLogout para cerrar sesión
-                            console.log('Cerrar sesión');  // Imprime en la consola un mensaje indicando que se cerró la sesión
-                          }}
-                        >
+                          onClick={handleLogout}>
                           Cerrar sesión
                         </button>
                       </li>
@@ -123,6 +123,5 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticat
     </div>
   );
 }
-
 
 export default Navbar;

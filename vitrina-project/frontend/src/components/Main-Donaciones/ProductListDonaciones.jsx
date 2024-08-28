@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Button, Pagination } from 'react-bootstrap';
-import ModalDetailDonaciones from '../Main-Donaciones/modal/ModalDetailDonaciones';
+import ModalDetailDonaciones from './modal/ModalDetailDonaciones';
 import './ProductListDonaciones.css';
 
 const ProductListDonaciones = ({ handleAddToCart }) => {
   const [show, setShow] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [donaciones, setDonaciones] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const productsPerPage = 8;
 
@@ -18,22 +18,22 @@ const ProductListDonaciones = ({ handleAddToCart }) => {
   };
 
   useEffect(() => {
-    fetch('http://localhost:5000/publicaciones?tipo=TP02')  // Filtra para donaciones
+    fetch('http://localhost:5000/publicaciones?tipo=TP02')  // Filtra para donaciones (gratis)
       .then(res => res.json())
-      .then(data => setDonaciones(data.publicaciones))
+      .then(data => setProducts(data.publicaciones))
       .catch(err => console.error('Error fetching donations:', err));
   }, []);
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = donaciones.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const nextPage = () => setCurrentPage(prevPage => Math.min(prevPage + 1, pageNumbers.length));
   const prevPage = () => setCurrentPage(prevPage => Math.max(prevPage - 1, 1));
 
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(donaciones.length / productsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(products.length / productsPerPage); i++) {
     pageNumbers.push(i);
   }
 
@@ -66,10 +66,10 @@ const ProductListDonaciones = ({ handleAddToCart }) => {
       </Pagination>
 
       {selectedProduct && (
-        <ModalDetailDonaciones
-          show={show}
-          handleClose={handleClose}
-          product={selectedProduct}
+        <ModalDetailDonaciones 
+          show={show} 
+          handleClose={handleClose} 
+          product={selectedProduct} 
           handleAddToCart={handleAddToCart} 
         />
       )}

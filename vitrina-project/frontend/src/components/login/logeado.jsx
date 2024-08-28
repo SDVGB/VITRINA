@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-function Logeado({ setIsAuthenticated }) {
+function Logeado({ setIsAuthenticated, setProfileImage }) { // Agrega setProfileImage como prop
 
   function parseJwt(token) {
     try {
@@ -17,7 +17,7 @@ function Logeado({ setIsAuthenticated }) {
   }
 
   useEffect(() => {
-    const checkToken = () => {
+    const checkToken = async () => {
       console.log('Iniciando verificación del token...');
       const token = localStorage.getItem('token');
 
@@ -49,6 +49,15 @@ function Logeado({ setIsAuthenticated }) {
             // Almacena el RUT del usuario en el localStorage si el token es válido
             const userId = decodedToken.userId; // Esto debe coincidir con el nombre del campo en tu token JWT
             localStorage.setItem('usuarioActual', userId);
+
+            // Cargar la imagen de perfil desde el servidor o el localStorage
+            const profileImageUrl = localStorage.getItem('profileImage');
+            if (profileImageUrl) {
+              setProfileImage(profileImageUrl); // Actualizar la imagen de perfil en la barra de navegación
+            } else {
+              // Si no hay una imagen guardada, cargar la imagen por defecto
+              setProfileImage('/assets/img/default_profile.png');
+            }
 
             /* Código original que se reemplazó
             localStorage.setItem('usuarioActual', 'a'); // Esto tenía un valor fijo 'a', pero ahora se usa el RUT del usuario real
@@ -86,7 +95,7 @@ function Logeado({ setIsAuthenticated }) {
     const intervalId = setInterval(checkToken, 5000); // Verificar cada 60 segundos
 
     return () => clearInterval(intervalId); // Limpiar intervalo al desmontar el componente
-  }, [setIsAuthenticated]);
+  }, [setIsAuthenticated, setProfileImage]); // Asegúrate de incluir setProfileImage en las dependencias
 
   return null; // No renderiza nada ya que es solo para verificar el token
 }
