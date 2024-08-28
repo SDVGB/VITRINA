@@ -3,7 +3,7 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 import nuevapublicacion from '../../assets/icons/nuevapublicacion.png';
 import profile from '../../assets/icons/profile.jpg';
 import notification from '../../assets/icons/notification.png';
-import './navbar.css';
+import './navbar.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
@@ -123,5 +123,6 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticat
     </div>
   );
 }
+
 
 export default Navbar;

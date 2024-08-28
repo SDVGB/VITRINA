@@ -16,7 +16,7 @@ const ProductCarousel = () => {
         />
         <Carousel.Caption>
           <h3>Elige ropa de segunda mano!</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, quaerat!</p>
+          <p>Dale una segunda vida a la ropa que no ocuparás</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -27,7 +27,7 @@ const ProductCarousel = () => {
         />
         <Carousel.Caption>
           <h3>Evita el FastFashion!</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisc eli.</p>
+          <p>Compra menos, elige bien, hazlo durar</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -38,7 +38,7 @@ const ProductCarousel = () => {
         />
         <Carousel.Caption>
           <h3>Moda de segundo uso</h3>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          <p>El “fast fashion” no es gratis. Alguien, en algún lugar, está pagando</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

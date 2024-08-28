@@ -23,7 +23,7 @@ const Nosotros = ()=>{
                         <figcaption>
                             <div className="info">
                                 <h3>Dania Candia</h3>
-                                <p>Minion </p>
+                                <p>Desarrollador Fullstack Javascript </p>
                             </div>
                             <div className="social">
                                 <a href="https://www.linkedin.com/in/dania-alisson-candia-fuentes-a7b0a4161/" className="LinkedIn" data-abc="true"><FontAwesomeIcon icon={faLinkedin} /></a>
@@ -41,7 +41,7 @@ const Nosotros = ()=>{
                         <figcaption>
                             <div className="info">
                                 <h3>Joan Rioseco</h3>
-                                <p>Minion</p>
+                                <p>Desarrollador Fullstack Javascript</p>
                             </div>
                             <div className="social">
                                 <a href="https://www.linkedin.com/in/joan-rioseco-barrera-9b0681305/" className="LinkedIn" data-abc="true"><FontAwesomeIcon icon={faLinkedin} /></a>
@@ -58,7 +58,7 @@ const Nosotros = ()=>{
                         <figcaption>
                             <div className="info">
                                 <h3>Stefania Guzman</h3>
-                                <p>Minion</p>
+                                <p>Desarrollador Fullstack Javascript</p>
                             </div>
                             <div className="social">
                                 <a href="https://www.linkedin.com/in/stefania-guzman/" className="LinkedIn" data-abc="true"><FontAwesomeIcon icon={faLinkedin} /></a>
@@ -75,7 +75,7 @@ const Nosotros = ()=>{
                         <figcaption>
                             <div className="info">
                                 <h3>Loreto Godoy</h3>
-                                <p>Minion</p>
+                                <p>Desarrollador Fullstack Javascript</p>
                             </div>
                             <div className="social">
                                 <a href="https://www.linkedin.com/in/loreto-godoy-carrasco-2a605428a/" className="LinkedIn" data-abc="true"><FontAwesomeIcon icon={faLinkedin} /></a>
@@ -92,7 +92,7 @@ const Nosotros = ()=>{
                         <figcaption>
                             <div className="info">
                                 <h3>Valeria Arredondo</h3>
-                                <p>Minion</p>
+                                <p>Desarrollador Fullstack Javascript</p>
                             </div>
                             <div className="social">
                                 <a href="https://www.linkedin.com/in/valeria-arredondo-478744299/" className="LinkedIn" data-abc="true"><FontAwesomeIcon icon={faLinkedin} /></a>

@@ -1,23 +1,23 @@
 /* Estilos generales */
-body {
+/* body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Fondo claro */
+    background-color: #f0f0f0; 
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-}
+} */
 
 /* Estilo para el formulario */
-form {
+/* form {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px; /* Ancho fijo para el formulario */
+    width: 300px; 
     box-sizing: border-box;
-}
+} */
 
 /* Estilo para los contenedores de entrada (correo, contraseña, etc.) */
 .input-container {
