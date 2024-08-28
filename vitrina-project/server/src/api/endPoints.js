@@ -14,7 +14,11 @@ const { tallas } = require('../controllers/tallasController');
 const { getAllPublicaciones } = require('../controllers/getAllPublicaciones');
 const { enviarSolicitudContacto } = require('../controllers/solicitudesController');
 const { obtenerNotificaciones } = require('../controllers/notificacionesController');
+const { creararticulos } = require('../controllers/createArticleController');
+const { getAllArticulos } = require('../controllers/getAllarticulosController');
 
+// Ruta para manejar artículos
+router.get('/getallarticulos', getAllArticulos);
 // Rutas de autenticación
 router.post('/register', register);
 router.post('/login', login);
@@ -40,5 +44,7 @@ router.get('/notificaciones/:userRut', obtenerNotificaciones);
 
 // Ruta para probar la conexión (ping)
 router.get('/ping', ping);
+
+router.post('/creararticulos', creararticulos);
 
 module.exports = router;

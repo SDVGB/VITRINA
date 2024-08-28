@@ -12,6 +12,7 @@ import LoginModal from '../src/components/login/loginmodal.jsx';
 import Carrito from '../src/components/Carrito/Carrito.jsx';
 import ProtectedRoute from '../src/components/nav/protectedRoute.jsx';
 import Publicaciones from '../src/components/protected-Routes/Publicaciones.jsx';
+import CrearArticulo from '../src/components/protected-Routes/Articulos.jsx';
 import Notificaciones from './components/Notificaciones/Notificaciones.jsx';
 import Perfil from './components/Perfil/Perfil.jsx'; 
 import { useCart } from './components/Carrito/useCart.js';  
@@ -102,6 +103,7 @@ function App() {
             />
           } />
           <Route path="/Publicaciones" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Publicaciones /></ProtectedRoute>} />
+          <Route path="/Articulos" element={<ProtectedRoute isAuthenticated={isAuthenticated}><CrearArticulo /></ProtectedRoute>} />
         </Routes>
       </div>
 

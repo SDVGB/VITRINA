@@ -7,13 +7,27 @@ import './navbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticated }) => {  // Asegúrate de recibir setIsAuthenticated aquí
+const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticated }) => {  // Asegúrate de recibir setIsAuthenticated aquí
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
   const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const handleLogout = () => {
+    // Eliminar el token del localStorage para matar la sesión
+    localStorage.removeItem('authToken');
+
+    // Actualizar el estado de autenticación a false
+    setIsAuthenticated(false);
+
+    // Redirigir al usuario a la página de inicio
+    navigate('/');
   };
 
   const handleLogout = () => {
@@ -67,7 +81,7 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticat
                       <img src={nuevapublicacion} alt="logo-publicaciones" className='logoPublicaciones' />
                     </button>
                     <ul className="dropdown-menu">
-                      <li><Link className="dropdown-item" to="/Publicaciones">Subir Artículo</Link></li>
+                      <li><Link className="dropdown-item" to="/Articulos">Subir Artículo</Link></li>
                       <li><Link className="dropdown-item" to="/Publicaciones">Crear Publicación</Link></li>
                     </ul>
                   </div>
@@ -83,6 +97,18 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticat
                       <li><Link className="dropdown-item" to="/perfil">Mi perfil</Link></li>
                       <li><Link className="dropdown-item" to="/intercambios">Mis intercambios</Link></li>
                       <li><Link className="dropdown-item" to="/mensajeria">Buzón</Link></li>
+                      <li>
+                        <button
+                          className="dropdown-item"
+                          onClick={() => {
+                            handleLogout();          // Llama a la función handleLogout para cerrar sesión
+                            console.log('Cerrar sesión');  // Imprime en la consola un mensaje indicando que se cerró la sesión
+                          }}
+                        >
+                          Cerrar sesión
+                        </button>
+                      </li>
+
                       <li>
                         <button
                           className="dropdown-item"
