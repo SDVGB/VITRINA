@@ -95,18 +95,6 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticat
                         </button>
                       </li>
 
-                      <li>
-                        <button
-                          className="dropdown-item"
-                          onClick={() => {
-                            handleLogout();          // Llama a la función handleLogout para cerrar sesión
-                            console.log('Cerrar sesión');  // Imprime en la consola un mensaje indicando que se cerró la sesión
-                          }}
-                        >
-                          Cerrar sesión
-                        </button>
-                      </li>
-
                     </ul>
                   </div>
                 </div>
