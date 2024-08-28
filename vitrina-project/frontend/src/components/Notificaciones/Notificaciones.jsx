@@ -6,13 +6,24 @@ const Notificaciones = ({ usuarioActual }) => {
 
   useEffect(() => {
     console.log("Usuario actual:", usuarioActual); // Verifica el valor de usuarioActual
-    fetch(`http://localhost:5000/notificaciones/${usuarioActual}`)
-      .then(res => res.json())
-      .then(data => {
-        console.log('Notificaciones recibidas:', data); // Verifica que los datos son correctos
-        setNotificaciones(data.notificaciones); // Asegúrate de que data.notificaciones es correcto
-      })
-      .catch(err => console.error('Error fetching notifications:', err));
+    const token = localStorage.getItem('token'); // Obtiene el token del localStorage
+
+    fetch(`http://localhost:5000/notificaciones/${usuarioActual}`, {
+      headers: {
+        'Authorization': `Bearer ${token}` // Envía el token en el encabezado Authorization
+      }
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Error en la solicitud, status: ' + res.status);
+      }
+      return res.json();
+    })
+    .then(data => {
+      console.log('Notificaciones recibidas:', data); // Verifica que los datos son correctos
+      setNotificaciones(data.notificaciones); // Asegúrate de que data.notificaciones es correcto
+    })
+    .catch(err => console.error('Error fetching notifications:', err));
   }, [usuarioActual]);
 
   return (

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-function Logeado({ setIsAuthenticated, setProfileImage }) { // Agrega setProfileImage como prop
+function Logeado({ setIsAuthenticated, setProfileImage }) {
 
   function parseJwt(token) {
     try {
@@ -20,8 +20,6 @@ function Logeado({ setIsAuthenticated, setProfileImage }) { // Agrega setProfile
     const checkToken = async () => {
       console.log('Iniciando verificación del token...');
       const token = localStorage.getItem('token');
-
-      // **Línea añadida**: Verifica si ya se recargó la página
       const hasReloaded = sessionStorage.getItem('hasReloaded'); 
 
       if (token) {
@@ -36,68 +34,51 @@ function Logeado({ setIsAuthenticated, setProfileImage }) { // Agrega setProfile
             setIsAuthenticated(false);
             localStorage.removeItem('token');
 
-            // **Líneas añadidas/modificadas**: Verifica si ya se recargó y marca la recarga
             if (!hasReloaded) {
-              sessionStorage.setItem('hasReloaded', 'true'); // Marca que ya se ha recargado
-              window.location.reload(); // Recarga la página
+              sessionStorage.setItem('hasReloaded', 'true');
+              window.location.reload();
             }
           } else {
             console.log('El token es válido.');
             setIsAuthenticated(true);
 
-            // **Agregado para hacer funcionar las notificaciones**
-            // Almacena el RUT del usuario en el localStorage si el token es válido
-            const userId = decodedToken.userId; // Esto debe coincidir con el nombre del campo en tu token JWT
+            const userId = decodedToken.userId;
             localStorage.setItem('usuarioActual', userId);
 
-            // Cargar la imagen de perfil desde el servidor o el localStorage
             const profileImageUrl = localStorage.getItem('profileImage');
             if (profileImageUrl) {
-              setProfileImage(profileImageUrl); // Actualizar la imagen de perfil en la barra de navegación
+              setProfileImage(profileImageUrl);
             } else {
-              // Si no hay una imagen guardada, cargar la imagen por defecto
               setProfileImage('/assets/img/default_profile.png');
             }
-
-            /* Código original que se reemplazó
-            localStorage.setItem('usuarioActual', 'a'); // Esto tenía un valor fijo 'a', pero ahora se usa el RUT del usuario real
-            */
           }
         } else {
           console.log('El token es inválido.');
           setIsAuthenticated(false);
 
-          // **Líneas añadidas/modificadas**: Verifica si ya se recargó y marca la recarga
           if (!hasReloaded) {
-            sessionStorage.setItem('hasReloaded', 'true'); // Marca que ya se ha recargado
-            window.location.reload(); // Recarga la página
+            sessionStorage.setItem('hasReloaded', 'true');
+            window.location.reload();
           }
         }
       } else {
         console.log('No se encontró ningún token.');
         setIsAuthenticated(false);
 
-        /* Código original que se reemplazó
-        console.log('No se encontró ningún token.');
-        setIsAuthenticated(false);
-        */
-
-        // **Líneas añadidas/modificadas**: Verifica si ya se recargó y marca la recarga
         if (!hasReloaded) {
-          sessionStorage.setItem('hasReloaded', 'true'); // Marca que ya se ha recargado
-          window.location.reload(); // Recarga la página
+          sessionStorage.setItem('hasReloaded', 'true');
+          window.location.reload();
         }
       }
     };
 
-    checkToken(); // Verificar token inmediatamente al montar el componente
+    checkToken(); 
+    const intervalId = setInterval(checkToken, 5000);
 
-    const intervalId = setInterval(checkToken, 5000); // Verificar cada 60 segundos
+    return () => clearInterval(intervalId); 
+  }, [setIsAuthenticated, setProfileImage]);
 
-    return () => clearInterval(intervalId); // Limpiar intervalo al desmontar el componente
-  }, [setIsAuthenticated, setProfileImage]); // Asegúrate de incluir setProfileImage en las dependencias
-
-  return null; // No renderiza nada ya que es solo para verificar el token
+  return null;
 }
 
 export default Logeado;
