@@ -16,15 +16,18 @@ const { enviarSolicitudContacto } = require('../controllers/solicitudesControlle
 const { obtenerNotificaciones } = require('../controllers/notificacionesController');
 const { creararticulos } = require('../controllers/createArticleController');
 const { getAllArticulos } = require('../controllers/getAllarticulosController');
+const { updateProfileImage } = require('../controllers/profileController');
+const profileValidator = require('../controllers/pofileValidator'); // Importa tu middleware personalizado
 
 // Ruta para manejar artículos
 router.get('/getallarticulos', getAllArticulos);
+
 // Rutas de autenticación
 router.post('/register', register);
 router.post('/login', login);
 
 // Rutas para obtener los datos necesarios para el formulario
-router.post('/postcreation', postcreation);
+router.post('/postcreation', profileValidator, postcreation); // Protegida
 router.get('/prendas', prendas);
 router.get('/tipospublicacion', tiposPublicacion);
 router.get('/generos', generos);
@@ -40,11 +43,14 @@ router.get('/publicaciones', getAllPublicaciones);
 router.post('/enviar-solicitud-contacto', enviarSolicitudContacto);
 
 // Ruta para obtener notificaciones de un usuario
-router.get('/notificaciones/:userRut', obtenerNotificaciones);
+router.get('/notificaciones/:userRut', profileValidator, obtenerNotificaciones); // Protegida
 
 // Ruta para probar la conexión (ping)
 router.get('/ping', ping);
 
-router.post('/creararticulos', creararticulos);
+router.post('/creararticulos', profileValidator, creararticulos); // Protegida
+
+// Ruta para actualizar la imagen de perfil
+router.post('/api/update-profile-image', profileValidator, updateProfileImage); // Protegida
 
 module.exports = router;
