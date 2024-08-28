@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import React, { useState, useEffect  } from 'react';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import nuevapublicacion from '../../assets/icons/nuevapublicacion.png';
 import defaultProfile from '../../assets/img/default_profile.png';
 import notification from '../../assets/icons/notification.png';
 import './navbar.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticated, profileImage, setProfileImage }) => {
+const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticated, profileImage, setProfileImage, userRole }) => {
+
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -70,7 +72,11 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticat
                       <img src={nuevapublicacion} alt="logo-publicaciones" className='logoPublicaciones' />
                     </button>
                     <ul className="dropdown-menu">
-                      <li><Link className="dropdown-item" to="/Articulos">Subir Artículo</Link></li>
+                      {/* Esta opción es visible solo para los administradores */}
+                      {userRole === 'Admin' && (
+                        <li><Link className="dropdown-item" to="/Articulos">Subir Artículo</Link></li>
+                      )}
+                      {/* Esta opción es visible para todos los usuarios autenticados */}
                       <li><Link className="dropdown-item" to="/Publicaciones">Crear Publicación</Link></li>
                     </ul>
                   </div>
