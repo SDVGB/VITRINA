@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import nuevapublicacion from '../../assets/icons/nuevapublicacion.png';
 import profile from '../../assets/icons/profile.jpg';
 import notification from '../../assets/icons/notification.png';
 import './navbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticated }) => {  // Asegúrate de recibir setIsAuthenticated aquí
+const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticated, userRole }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -67,7 +66,11 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticat
                       <img src={nuevapublicacion} alt="logo-publicaciones" className='logoPublicaciones' />
                     </button>
                     <ul className="dropdown-menu">
-                      <li><Link className="dropdown-item" to="/Articulos">Subir Artículo</Link></li>
+                      {/* Esta opción es visible solo para los administradores */}
+                      {userRole === 'Admin' && (
+                        <li><Link className="dropdown-item" to="/Articulos">Subir Artículo</Link></li>
+                      )}
+                      {/* Esta opción es visible para todos los usuarios autenticados */}
                       <li><Link className="dropdown-item" to="/Publicaciones">Crear Publicación</Link></li>
                     </ul>
                   </div>
@@ -94,7 +97,6 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticat
                           Cerrar sesión
                         </button>
                       </li>
-
                     </ul>
                   </div>
                 </div>

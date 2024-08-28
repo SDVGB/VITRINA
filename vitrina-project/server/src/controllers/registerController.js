@@ -25,7 +25,7 @@ module.exports.register = async (req, res) => {
         const nombreUsuario = 'Usuario'; // Nombre por defecto
         const apellidoPaterno = 'Paterno'; // Apellido paterno por defecto
         const apellidoMaterno = 'Materno'; // Apellido materno por defecto
-        const rolId = 'R001'; // ID del rol por defecto
+        const rolId = 'R002'; // ID del rol por defecto
 
         // Inserta el nuevo usuario en la base de datos
         await connection.promise().query(

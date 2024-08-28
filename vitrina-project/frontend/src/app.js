@@ -19,26 +19,44 @@ import { useCart } from './components/Carrito/useCart.js';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    // Obtener el estado de autenticación desde el localStorage al iniciar la aplicación
     return localStorage.getItem('isAuthenticated') === 'true';
   });
 
-  useEffect(() => {
-    // Guardar el estado de autenticación en el localStorage cuando cambie
-    localStorage.setItem('isAuthenticated', isAuthenticated);
-  }, [isAuthenticated]);
+  const [userRole, setUserRole] = useState(() => {
+    return localStorage.getItem('userRole') || '';
+  });
 
   const [showModal, setShowModal] = useState(false);
   const [usuarioActual, setUsuarioActual] = useState(() => {
-    // Aquí puedes obtener el ID del usuario actual desde el localStorage o desde otra fuente
-    // Si no existe, usa 'a' como valor predeterminado (deberías ajustar esto según tu lógica)
     return localStorage.getItem('usuarioActual') || ''; 
   });
+  
 
   useEffect(() => {
-    // Guardar el ID del usuario actual en el localStorage cuando cambie
+    localStorage.setItem('isAuthenticated', isAuthenticated);
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    localStorage.setItem('userRole', userRole);
+  }, [userRole]);
+
+  useEffect(() => {
     localStorage.setItem('usuarioActual', usuarioActual);
   }, [usuarioActual]);
+
+  const handleLoginSuccess = (role, userId) => {
+    setIsAuthenticated(true);
+    setUserRole(role);
+    setUsuarioActual(userId); // Actualiza el estado de usuario actual
+  };
+
+  const handleLoginClick = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   // Hook para manejar el carrito
   const {
@@ -50,19 +68,8 @@ function App() {
     totalItemsInCart
   } = useCart();
 
-  const handleLoginClick = () => {
-    // Mostrar el modal de inicio de sesión cuando se haga clic en "Iniciar sesión"
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    // Cerrar el modal de inicio de sesión
-    setShowModal(false);
-  };
-
   return (
     <div id="root">
-      {/* Alerta de confirmación */}
       {showConfirmation && (
         <div className="alert alert-success text-center" role="alert">
           Producto agregado al carrito con éxito
@@ -70,44 +77,56 @@ function App() {
       )}
 
       <div className="main-content">
-        {/* Mostrar un componente para usuarios logueados */}
-        {isAuthenticated && <Logeado setIsAuthenticated={setIsAuthenticated} />}
+        {isAuthenticated && <Logeado setIsAuthenticated={setIsAuthenticated} userRole={userRole} />}
         
-        {/* Barra de navegación */}
         <Navbar 
           onLoginClick={handleLoginClick} 
           isAuthenticated={isAuthenticated} 
+          userRole={userRole}  // Asegúrate de pasar userRole aquí
           cartItemCount={totalItemsInCart} 
           setIsAuthenticated={setIsAuthenticated} 
         />
         
-        {/* Modal de inicio de sesión */}
-        <LoginModal show={showModal} handleClose={handleCloseModal} setIsAuthenticated={setIsAuthenticated} />
+        <LoginModal 
+          show={showModal} 
+          handleClose={handleCloseModal} 
+          setIsAuthenticated={setIsAuthenticated} 
+          setUserRole={setUserRole} 
+          setUsuarioActual={setUsuarioActual} // Pasar función para actualizar usuarioActual
+        />
 
         <Routes>
-          {/* Rutas de la aplicación */}
-          <Route path="/" element={<Home isAuthenticated={isAuthenticated} />} />
-          <Route path="/Blog" element={<Blog isAuthenticated={isAuthenticated} />} />
+          <Route path="/" element={<Home isAuthenticated={isAuthenticated} userRole={userRole} />} />
+          <Route path="/Blog" element={<Blog isAuthenticated={isAuthenticated} userRole={userRole} />} />
           <Route path="/Ventas" element={<Ventas isAuthenticated={isAuthenticated} handleAddToCart={handleAddToCart} />} />
           <Route path="/Quienes-somos" element={<AboutUs isAuthenticated={isAuthenticated} />} />
-          <Route path="/Donaciones" element={<Donaciones isAuthenticated={isAuthenticated} handleAddToCart={handleAddToCart} />} /> {/* Pasar handleAddToCart a Donaciones */}
-          <Route path="/notificaciones" element={<Notificaciones usuarioActual={usuarioActual} />} /> {/* Pasar el usuario actual a Notificaciones */}
+          <Route path="/Donaciones" element={<Donaciones isAuthenticated={isAuthenticated} handleAddToCart={handleAddToCart} />} />
+          <Route path="/notificaciones" element={<Notificaciones usuarioActual={usuarioActual} />} />
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/*" element={<Home isAuthenticated={isAuthenticated} />} />
 
-          <Route path="/carrito" element={
-            <Carrito
+          <Route path="/carrito" element={<Carrito
               cart={cart}
               handleIncrement={handleIncrement}
               handleDecrement={handleDecrement}
             />
           } />
-          <Route path="/Publicaciones" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Publicaciones /></ProtectedRoute>} />
-          <Route path="/Articulos" element={<ProtectedRoute isAuthenticated={isAuthenticated}><CrearArticulo /></ProtectedRoute>} />
+          
+          <Route path="/Publicaciones" element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <Publicaciones />
+            </ProtectedRoute>
+          } />
+          
+          
+          <Route path="/Articulos" element={
+            <ProtectedRoute isAuthenticated={isAuthenticated} userRole={userRole} requiredRole="Admin">
+              <CrearArticulo />
+            </ProtectedRoute>
+          } />
         </Routes>
       </div>
 
-      {/* Pie de página */}
       <Footer />
     </div>
   );

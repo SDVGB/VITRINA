@@ -3,7 +3,7 @@ import { Modal, Button, Form, Row, Col, InputGroup } from 'react-bootstrap';
 import './loginmodal.css';
 import { useNavigate } from 'react-router-dom';
 
-const LoginModal = ({ show, handleClose, setIsAuthenticated }) => {
+const LoginModal = ({ show, handleClose, setIsAuthenticated,setUserRole  }) => {
   // Estado para los campos de entrada de inicio de sesión
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -37,14 +37,16 @@ const LoginModal = ({ show, handleClose, setIsAuthenticated }) => {
       .then(response => response.json())
       .then(result => {
         console.log(result.token);
+      
         if (result.token) {
+          console.log(result.role); // Verifica que el rol esté llegando correctamente
           localStorage.setItem('token', result.token);
+          
+          setUserRole(result.role);
           setLoginSuccessful(true);
           setIsAuthenticated(true); // Notifica que el usuario está autenticado
           navigate('/logeado');  // Redirige a la ruta de Logeado       
           handleClose(); // Cierra el modal de inicio de sesión
-       
-
 
 
           // Redirige al componente Logeado
