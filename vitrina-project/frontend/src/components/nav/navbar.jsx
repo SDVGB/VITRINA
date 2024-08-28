@@ -3,32 +3,18 @@ import { Link, Outlet } from 'react-router-dom';
 import nuevapublicacion from '../../assets/icons/nuevapublicacion.png';
 import profile from '../../assets/icons/profile.jpg';
 import notification from '../../assets/icons/notification.png';
-import './navbar.css';
+import './navbar.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { useNavigate } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-
-const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticated }) => {  // Asegúrate de recibir setIsAuthenticated aquí
-const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticated }) => {  // Asegúrate de recibir setIsAuthenticated aquí
+const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticated }) => { // Asegúrate de recibir setIsAuthenticated aquí
   const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate();
   const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const handleLogout = () => {
-    // Eliminar el token del localStorage para matar la sesión
-    localStorage.removeItem('authToken');
-
-    // Actualizar el estado de autenticación a false
-    setIsAuthenticated(false);
-
-    // Redirigir al usuario a la página de inicio
-    navigate('/');
-  };
 
   const handleLogout = () => {
     // Eliminar el token del localStorage para matar la sesión
@@ -147,5 +133,6 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticat
     </div>
   );
 }
+
 
 export default Navbar;
