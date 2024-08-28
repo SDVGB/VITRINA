@@ -7,7 +7,6 @@ import './navbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
-import { useNavigate } from 'react-router-dom';
 
 const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticated, profileImage, setProfileImage, userRole }) => {
 
