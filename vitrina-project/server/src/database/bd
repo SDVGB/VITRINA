@@ -1,0 +1,140 @@
+-- Paso 1: Eliminar la base de datos si existe
+DROP DATABASE IF EXISTS vitrina;
+
+-- Paso 2: Crear la base de datos si no existe
+CREATE DATABASE IF NOT EXISTS vitrina;
+
+-- Paso 3: Seleccionar la base de datos
+USE vitrina;
+
+
+    
+-- Crear tabla Roles
+CREATE TABLE Roles 
+(
+    ID_Rol CHAR(4) NOT NULL, 
+    Nombre_Rol VARCHAR(50) NOT NULL,
+    PRIMARY KEY (ID_Rol)
+);
+
+-- Crear tabla Usuario
+CREATE TABLE Usuario 
+(
+    ID_Rut CHAR(12) NOT NULL, 
+    Nombre_Usuario CHAR(30) NOT NULL, 
+    Apellido_Paterno CHAR(30) NOT NULL, 
+    Apellido_Materno CHAR(30) NOT NULL, 
+    Contraseña VARCHAR(255) NOT NULL, 
+    Correo_Usuario VARCHAR(150) NOT NULL, 
+    Roles_ID_Rol CHAR(4) NOT NULL,
+    PRIMARY KEY (ID_Rut),
+    FOREIGN KEY (Roles_ID_Rol) REFERENCES Roles(ID_Rol) 
+);
+
+-- Crear tabla Edad
+CREATE TABLE Edad 
+(
+    ID_Edad CHAR(4) NOT NULL, 
+    Nombre_Edad CHAR(12) NOT NULL,
+    PRIMARY KEY (ID_Edad)
+);
+
+-- Crear tabla Genero
+CREATE TABLE Genero 
+(
+    ID_Genero CHAR(4) NOT NULL, 
+    Nombre_Genero VARCHAR(30) NOT NULL,
+    PRIMARY KEY (ID_Genero)
+);
+
+-- Crear tabla Talla
+CREATE TABLE Talla 
+(
+    ID_Talla CHAR(4) NOT NULL, 
+    Nombre_Talla CHAR(4) NOT NULL,
+    PRIMARY KEY (ID_Talla)
+);
+
+-- Crear tabla Tipo_de_Publicacion
+CREATE TABLE Tipo_de_Publicacion 
+(
+    ID_Tipo_Publicacion CHAR(4) NOT NULL, 
+    Nombre_Tipo_Publicacion CHAR(8) NOT NULL,
+    PRIMARY KEY (ID_Tipo_Publicacion)
+);
+
+-- Crear tabla Tipo_Prendas
+CREATE TABLE Tipo_Prendas 
+(
+    ID_Prenda CHAR(4) NOT NULL, 
+    Nombre_Prenda VARCHAR(30) NOT NULL,
+    PRIMARY KEY (ID_Prenda)
+);
+
+-- Crear tabla Articulos
+CREATE TABLE Articulos 
+(
+	ID_Articulos MEDIUMINT NOT NULL AUTO_INCREMENT,
+    ID_Rut CHAR(12) NOT NULL, 
+    Nombre_Articulo VARCHAR(100) NOT NULL, 
+    Fecha_Articulo DATETIME NOT NULL, 
+    Descripcion_Articulos TEXT NOT NULL, 
+    Link_Ref_Articulos TEXT NOT NULL, 
+    Imagen_Articulos_Ruta VARCHAR(225) NOT NULL,
+    PRIMARY KEY (ID_Articulos),
+    FOREIGN KEY (ID_Rut) REFERENCES Usuario(ID_Rut) 
+);
+
+-- Crear tabla Notificaciones
+
+CREATE TABLE Notificaciones (
+    ID_Notificaciones INT AUTO_INCREMENT PRIMARY KEY,  -- Identificador único para cada notificación
+    Usuario_ID_Rut CHAR(12) NOT NULL,              -- Identificador del usuario que recibirá la notificación
+    Mensaje_Notificacion VARCHAR(255) NOT NULL,                   -- El mensaje de la notificación
+    Fecha_Notificacion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,  -- Fecha y hora en que se creó la notificación
+    Visto BOOLEAN DEFAULT FALSE,                     -- Indica si la notificación ha sido vista o no
+    FOREIGN KEY (Usuario_ID_Rut) REFERENCES Usuario(ID_Rut)     -- Relación con la tabla de usuarios
+);
+
+
+-- Crear tabla Publicacion
+CREATE TABLE Publicacion 
+(    
+	ID_Publicacion MEDIUMINT NOT NULL AUTO_INCREMENT, 
+    Nombre_Publicacion VARCHAR(30) NOT NULL,
+    Fecha_Publicacion DATETIME NOT NULL, 
+    Cantidad TINYINT NOT NULL,
+	precio INT,
+    Descripcion_Publicacion VARCHAR(225) ,
+    ID_Prenda CHAR(4) NOT NULL, 
+    ID_Rut CHAR(12) NOT NULL, 
+    ID_Tipo_Publicacion CHAR(4) NOT NULL, 
+    ID_Genero CHAR(4) NOT NULL, 
+    ID_Talla CHAR(4) NOT NULL, 
+    ID_Edad CHAR(4) NOT NULL, 
+    Imagen_Publicacion_Rutas VARCHAR(225) NOT NULL,
+    PRIMARY KEY (ID_Publicacion),
+    FOREIGN KEY (ID_Edad) REFERENCES Edad(ID_Edad),
+    FOREIGN KEY (ID_Genero) REFERENCES Genero(ID_Genero),
+    FOREIGN KEY (ID_Talla) REFERENCES Talla(ID_Talla),
+    FOREIGN KEY (ID_Tipo_Publicacion) REFERENCES Tipo_de_Publicacion(ID_Tipo_Publicacion) ,
+    FOREIGN KEY (ID_Prenda) REFERENCES Tipo_Prendas(ID_Prenda) ,
+    FOREIGN KEY (ID_Rut) REFERENCES Usuario(ID_Rut) 
+);
+
+-- Crear tabla Solicitudes_de_Contacto
+CREATE TABLE Solicitudes_de_Contacto 
+(	ID_Solicitud_Contacto MEDIUMINT NOT NULL AUTO_INCREMENT,
+    ID_Publicacion MEDIUMINT NOT NULL, 
+    Nombre_Solicitante CHAR(50) NOT NULL, 
+    Apellido_Solicitante CHAR(50) NOT NULL, 
+    Correo_Solicitante VARCHAR(150) NOT NULL, 
+    Contactame VARCHAR(100) NOT NULL, 
+    Descripcion_Solicitud TEXT,
+	Fecha_Solicitudes DATETIME NOT NULL,
+    PRIMARY KEY (ID_Solicitud_Contacto),
+    FOREIGN KEY (ID_Publicacion) REFERENCES Publicacion(ID_Publicacion) 
+);
+ALTER TABLE Usuario ADD COLUMN Imagen_Perfil VARCHAR(255) DEFAULT '/assets/default_profile.png';
+-- Ajustar el modo SQL para permitir la inserción de valores AUTO_INCREMENT como cero
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
