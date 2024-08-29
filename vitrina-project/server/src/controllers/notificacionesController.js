@@ -18,3 +18,4 @@ const obtenerNotificaciones = (req, res) => {
 module.exports = {
     obtenerNotificaciones,
 };
+

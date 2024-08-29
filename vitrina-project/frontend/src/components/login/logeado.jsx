@@ -18,21 +18,21 @@ function Logeado({ setIsAuthenticated, setProfileImage }) { // Agrega setProfile
 
   useEffect(() => {
     const checkToken = async () => {
-      console.log('Iniciando verificación del token...');
+     /*  console.log('Iniciando verificación del token...'); */
       const token = localStorage.getItem('token');
 
       // **Línea añadida**: Verifica si ya se recargó la página
       const hasReloaded = sessionStorage.getItem('hasReloaded'); 
 
       if (token) {
-        console.log('Token encontrado:', token);
+       /*  console.log('Token encontrado:', token); */
         const decodedToken = parseJwt(token);
-        console.log('Token decodificado:', decodedToken);
+      /*   console.log('Token decodificado:', decodedToken); */
         if (decodedToken && decodedToken.exp) {
           const expirationDate = new Date(decodedToken.exp * 1000);
-          console.log('Fecha de expiración del token:', expirationDate);
+       /*    console.log('Fecha de expiración del token:', expirationDate); */
           if (expirationDate < new Date()) {
-            console.log('El token ha expirado.');
+       /*      console.log('El token ha expirado.'); */
             setIsAuthenticated(false);
             localStorage.removeItem('token');
 
@@ -42,7 +42,7 @@ function Logeado({ setIsAuthenticated, setProfileImage }) { // Agrega setProfile
               window.location.reload(); // Recarga la página
             }
           } else {
-            console.log('El token es válido.');
+          /*   console.log('El token es válido.'); */
             setIsAuthenticated(true);
 
             // **Agregado para hacer funcionar las notificaciones**
@@ -64,7 +64,7 @@ function Logeado({ setIsAuthenticated, setProfileImage }) { // Agrega setProfile
             */
           }
         } else {
-          console.log('El token es inválido.');
+       /*    console.log('El token es inválido.'); */
           setIsAuthenticated(false);
 
           // **Líneas añadidas/modificadas**: Verifica si ya se recargó y marca la recarga
@@ -74,7 +74,7 @@ function Logeado({ setIsAuthenticated, setProfileImage }) { // Agrega setProfile
           }
         }
       } else {
-        console.log('No se encontró ningún token.');
+     /*    console.log('No se encontró ningún token.'); */
         setIsAuthenticated(false);
 
         /* Código original que se reemplazó
