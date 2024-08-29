@@ -34,7 +34,6 @@ function App() {
     localStorage.setItem('isAuthenticated', isAuthenticated);
   }, [isAuthenticated]);
 
-
   useEffect(() => {
     if (profileImage) {
       localStorage.setItem('profileImage', profileImage);
@@ -46,7 +45,6 @@ function App() {
     return localStorage.getItem('usuarioActual') || ''; 
   });
   
-
   useEffect(() => {
     localStorage.setItem('isAuthenticated', isAuthenticated);
   }, [isAuthenticated]);
@@ -58,7 +56,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem('usuarioActual', usuarioActual);
   }, [usuarioActual]);
-
 
   const handleLoginSuccess = (role, userId) => {
     setIsAuthenticated(true);
@@ -75,17 +72,15 @@ function App() {
   };
 
   // Hook para manejar el carrito
-
   const {
     cart,
     showConfirmation,
     handleAddToCart,
     handleIncrement,
     handleDecrement,
+    clearCart, // Añadimos clearCart al hook
     totalItemsInCart
   } = useCart();
-
-
 
   return (
     <div id="root">
@@ -96,61 +91,51 @@ function App() {
       )}
 
       <div className="main-content">
+        {isAuthenticated && <Logeado setIsAuthenticated={setIsAuthenticated} setProfileImage={setProfileImage} userRole={userRole} />}
 
-
-        {isAuthenticated && <Logeado setIsAuthenticated={setIsAuthenticated} setProfileImage={setProfileImage} userRole={userRole}  />}
-
-        
         <Navbar 
           onLoginClick={handleLoginClick} 
           isAuthenticated={isAuthenticated} 
-          userRole={userRole}  // Asegúrate de pasar userRole aquí
+          userRole={userRole} 
           cartItemCount={totalItemsInCart} 
           setIsAuthenticated={setIsAuthenticated} 
           profileImage={profileImage} 
-          setProfileImage={setProfileImage}  // Pass setProfileImage to Navbar
+          setProfileImage={setProfileImage} 
         />
-        
-
-
-     
-          
 
         <LoginModal 
-        show={showModal} 
-        handleClose={handleCloseModal} 
-        setIsAuthenticated={setIsAuthenticated}
-        setUserRole={setUserRole} 
-        setUsuarioActual={setUsuarioActual} // Pasar función para actualizar usuarioActual /
+          show={showModal} 
+          handleClose={handleCloseModal} 
+          setIsAuthenticated={setIsAuthenticated}
+          setUserRole={setUserRole} 
+          setUsuarioActual={setUsuarioActual} 
         />
 
         <Routes>
           <Route path="/" element={<Home isAuthenticated={isAuthenticated} userRole={userRole} />} />
           <Route path="/Blog" element={<Blog isAuthenticated={isAuthenticated} userRole={userRole} />} />
-
           <Route path="/Ventas" element={<Ventas isAuthenticated={isAuthenticated} handleAddToCart={handleAddToCart} />} />
           <Route path="/Quienes-somos" element={<AboutUs isAuthenticated={isAuthenticated} />} />
           <Route path="/Donaciones" element={<Donaciones isAuthenticated={isAuthenticated} handleAddToCart={handleAddToCart} />} />
           <Route path="/notificaciones" element={<Notificaciones usuarioActual={usuarioActual} />} />
-
-
           <Route path="/perfil" element={<Perfil setProfileImage={setProfileImage} />} />
           <Route path="/*" element={<Home isAuthenticated={isAuthenticated} />} />
 
-          <Route path="/carrito" element={<Carrito
+          <Route path="/carrito" element={
+            <Carrito
               cart={cart}
               handleIncrement={handleIncrement}
               handleDecrement={handleDecrement}
+              clearCart={clearCart} // Pasamos clearCart al componente Carrito
             />
           } />
-          
+
           <Route path="/Publicaciones" element={
             <ProtectedRoute isAuthenticated={isAuthenticated}>
               <Publicaciones />
             </ProtectedRoute>
           } />
-          
-          
+
           <Route path="/Articulos" element={
             <ProtectedRoute isAuthenticated={isAuthenticated} userRole={userRole} requiredRole="Admin">
               <CrearArticulo />

@@ -1,12 +1,17 @@
 import React from 'react';
 import './Carrito.css';
 
-const Carrito = ({ cart, handleIncrement, handleDecrement }) => {
+const Carrito = ({ cart, handleIncrement, handleDecrement, clearCart }) => {
   
   const total = cart.reduce((sum, item) => {
     const itemPrice = item.price || 0;
     return sum + itemPrice * item.quantity;
   }, 0);
+
+  const handleCheckout = () => {
+    alert('Formularios enviados');
+    clearCart(); // Limpiar el carrito
+  };
 
   return (
     <div className="container mt-5">
@@ -28,7 +33,7 @@ const Carrito = ({ cart, handleIncrement, handleDecrement }) => {
         ))}
       </ul>
       <h3>Total de la compra: ${total.toLocaleString()}</h3>
-      <button className="btn btn-primary1">Contactarse!</button>
+      <button onClick={handleCheckout} className="btn btn-primary">Contactarse!</button>
     </div>
   );
 };

@@ -40,6 +40,10 @@ export const useCart = () => {
     );
   };
 
+  const clearCart = () => {
+    setCart([]); // Limpiar el carrito
+  };
+
   const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
 
   return {
@@ -48,6 +52,7 @@ export const useCart = () => {
     handleAddToCart,
     handleIncrement,
     handleDecrement,
+    clearCart, // Agregamos la función clearCart
     totalItemsInCart
   };
 };
