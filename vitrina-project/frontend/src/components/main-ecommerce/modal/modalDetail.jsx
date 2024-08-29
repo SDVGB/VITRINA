@@ -72,9 +72,13 @@ const ModalDetail = ({ show, handleClose, product, handleAddToCart }) => {
             </div>
             <div className="details-section">
               <h3>{product.Nombre_Publicacion}</h3>
-              <p className="price">GRATIS</p>
+              <p className="price">{product.precio ? `$${product.precio}` : 'GRATIS'}</p>
               <div className="size-section">
+                {/* Mostrar el Nombre_Talla en lugar de ID_Talla */}
+                <p>Tamaño: <strong>{product.Nombre_Talla || 'No especificado'}</strong></p>
+                {/* Código original comentado
                 <p>Tamaño: <strong>{product.ID_Talla || 'No especificado'}</strong></p>
+                */}
               </div>
 
               <div className="d-flex justify-content-between">
@@ -82,7 +86,6 @@ const ModalDetail = ({ show, handleClose, product, handleAddToCart }) => {
                   variant="primary" 
                   className="add-to-cart" 
                   onClick={() => handleAddToCart(product)}>
-
                   Agregar al Carrito
                 </Button>
                 <Button variant="primary" className="contact-seller" onClick={handleContactClick}>
