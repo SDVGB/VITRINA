@@ -38,6 +38,7 @@ const Home = () => {
           <h2>Últimos artículos y comunicados</h2>
           <p>"Somos una vitrina que muestra un mundo sustentable"</p>
         </div>
+
         {/* El div principal se deja al centro con una columna a la izquierda de distancia */}
         <div id="Contenedor-Principal">
           {/* Las publicaciones del blog quedan a la izquierda utilizando la mitad de la pantalla */}
@@ -53,6 +54,7 @@ const Home = () => {
                   alt={articulo.Nombre_Articulo}
                 />
 
+
                 <h3>{articulo.Nombre_Articulo}</h3>
                 <p>{articulo.Descripcion_Articulos}</p>
                 <a
@@ -63,6 +65,7 @@ const Home = () => {
                   <button>Ver más</button>
                 </a>
               </div>
+
             ))}
           </div>
           {/* La última venta queda a la derecha utilizando la otra mitad de la pantalla */}
@@ -89,6 +92,7 @@ const Home = () => {
                   </div>
                 </Fragment>
               )}
+
             </div>
           </div>
         </div>
