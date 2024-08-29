@@ -72,16 +72,20 @@ const ModalDetailDonaciones = ({ show, handleClose, product, handleAddToCart }) 
             </div>
             <div className="details-section">
               <h3>{product.Nombre_Publicacion}</h3>
-              <p className="price">GRATIS</p>
+              <p className="price">GRATIS</p> {/* Siempre mostrar "GRATIS" para donaciones */}
               <div className="size-section">
+                {/* Mostrar el Nombre_Talla en lugar de ID_Talla */}
+                <p>Tamaño: <strong>{product.Nombre_Talla || 'No especificado'}</strong></p>
+                {/* Código original comentado
                 <p>Tamaño: <strong>{product.ID_Talla || 'No especificado'}</strong></p>
+                */}
               </div>
 
               <div className="d-flex justify-content-between">
                 <Button 
                   variant="primary" 
                   className="add-to-cart" 
-                  onClick={() => handleAddToCart({ ...product, price: 0 })}>
+                  onClick={() => handleAddToCart({ ...product, price: 0 })}> {/* El precio siempre es 0 */}
                   Agregar al Carrito
                 </Button>
                 <Button variant="primary" onClick={handleContactClick}>
