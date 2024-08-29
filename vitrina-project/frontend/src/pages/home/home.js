@@ -49,7 +49,7 @@ const Home = () => {
                   {
                     articulos.map((articulo) => (
                       <div key={articulo.ID_Articulos} className="article-card col-md-6">
-                        <img src={articulo.Imagen_Articulos_Ruta} alt={articulo.Nombre_Articulo} />
+                   <img src={`http://localhost:5000${articulo.Imagen_Articulos_Ruta}`} alt={articulo.Nombre_Articulo} />
                         <h3>{articulo.Nombre_Articulo}</h3>
                         <p>{articulo.Descripcion_Articulos}</p>
                         <a href={articulo.Link_Ref_Articulos} target='_blank' rel="noreferrer">
@@ -69,7 +69,7 @@ const Home = () => {
                   {
                     publicacion && (
                       <Fragment>
-                        <img src={publicacion.Imagen_Publicacion_Rutas} alt={`Nuevo! ${publicacion.Nombre_Publicacion} - L`} />
+                              <img src={`http://localhost:5000${publicacion.Imagen_Publicacion_Rutas}`} alt={`Nuevo! ${publicacion.Nombre_Publicacion} - L`} />
                         <h3>¡Nuevo! {publicacion.Nombre_Publicacion} - L</h3>
                         <p>Se regala chaqueta, marca Mountain Hardwear de hombre, sin uso. Entrega en metros a convenir. Contacto solo por correo.</p>
                         <div className="buttons">
