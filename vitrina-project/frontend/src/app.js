@@ -45,6 +45,12 @@ function App() {
     return localStorage.getItem('usuarioActual') || ''; 
   });
 
+  
+  useEffect(() => {
+    localStorage.setItem('isAuthenticated', isAuthenticated);
+  }, [isAuthenticated]);
+
+
   useEffect(() => {
     localStorage.setItem('userRole', userRole);
   }, [userRole]);
@@ -67,12 +73,16 @@ function App() {
     setShowModal(false);
   };
 
+
+  // Hook para manejar el carrito
+
   const {
     cart,
     showConfirmation,
     handleAddToCart,
     handleIncrement,
     handleDecrement,
+    clearCart, // Añadimos clearCart al hook
     totalItemsInCart
   } = useCart();
 
@@ -85,25 +95,31 @@ function App() {
       )}
 
       <div className="main-content">
-        {isAuthenticated && <Logeado setIsAuthenticated={setIsAuthenticated} setProfileImage={setProfileImage} userRole={userRole}  />}
+
+        {isAuthenticated && <Logeado setIsAuthenticated={setIsAuthenticated} setProfileImage={setProfileImage} userRole={userRole} />}
+
+
 
         <Navbar 
           onLoginClick={handleLoginClick} 
           isAuthenticated={isAuthenticated} 
-          userRole={userRole}
+
+          userRole={userRole} 
           cartItemCount={totalItemsInCart} 
           setIsAuthenticated={setIsAuthenticated} 
           profileImage={profileImage} 
-          setProfileImage={setProfileImage}
+          setProfileImage={setProfileImage} 
         />
-        
+
+
         <LoginModal 
           show={showModal} 
           handleClose={handleCloseModal} 
           setIsAuthenticated={setIsAuthenticated}
           setUserRole={setUserRole} 
-          setUsuarioActual={setUsuarioActual}
-        />
+
+          setUsuarioActual={setUsuarioActual} 
+
 
         <Routes>
           <Route path="/" element={<Home isAuthenticated={isAuthenticated} userRole={userRole} />} />
@@ -114,17 +130,28 @@ function App() {
           <Route path="/notificaciones" element={<Notificaciones usuarioActual={usuarioActual} />} />
           <Route path="/perfil" element={<Perfil setProfileImage={setProfileImage} />} />
           <Route path="/*" element={<Home isAuthenticated={isAuthenticated} />} />
-          <Route path="/carrito" element={<Carrito
+
+
+          <Route path="/carrito" element={
+            <Carrito
+
               cart={cart}
               handleIncrement={handleIncrement}
               handleDecrement={handleDecrement}
+              clearCart={clearCart} // Pasamos clearCart al componente Carrito
             />
           } />
+
+
+
           <Route path="/Publicaciones" element={
             <ProtectedRoute isAuthenticated={isAuthenticated}>
               <Publicaciones />
             </ProtectedRoute>
           } />
+
+
+
           <Route path="/Articulos" element={
             <ProtectedRoute isAuthenticated={isAuthenticated} userRole={userRole} requiredRole="Admin">
               <CrearArticulo />

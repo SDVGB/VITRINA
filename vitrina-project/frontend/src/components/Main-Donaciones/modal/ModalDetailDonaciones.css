@@ -1,12 +1,12 @@
-/* Modal */
 .modal-dialog {
-  max-width: 80%;
+  width: 50%;
 }
 
 .modal-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 20px;
+  flex-wrap: wrap
 }
 
 .modal-header {
@@ -43,6 +43,7 @@
 .product-image {
   width: 100%;
   max-width: 400px;
+  height: 390px
 }
 
 .details-section {
