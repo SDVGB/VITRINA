@@ -30,7 +30,7 @@ const Footer = () => {  // defino footer  con una funcion de flecha  y un return
             <a href="#">
               <FontAwesomeIcon icon={faInstagram} className="social-icon" />
             </a>
-            <a href="#">
+            <a href="https://x.com/ProyectoVitrina">
               <FontAwesomeIcon icon={faSquareXTwitter} className="social-icon" />
             </a>
             <a href="#">
