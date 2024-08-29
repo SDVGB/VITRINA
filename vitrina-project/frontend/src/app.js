@@ -44,10 +44,12 @@ function App() {
   const [usuarioActual, setUsuarioActual] = useState(() => {
     return localStorage.getItem('usuarioActual') || ''; 
   });
+
   
   useEffect(() => {
     localStorage.setItem('isAuthenticated', isAuthenticated);
   }, [isAuthenticated]);
+
 
   useEffect(() => {
     localStorage.setItem('userRole', userRole);
@@ -60,7 +62,7 @@ function App() {
   const handleLoginSuccess = (role, userId) => {
     setIsAuthenticated(true);
     setUserRole(role);
-    setUsuarioActual(userId); // Actualiza el estado de usuario actual
+    setUsuarioActual(userId);
   };
 
   const handleLoginClick = () => {
@@ -71,7 +73,9 @@ function App() {
     setShowModal(false);
   };
 
+
   // Hook para manejar el carrito
+
   const {
     cart,
     showConfirmation,
@@ -91,11 +95,15 @@ function App() {
       )}
 
       <div className="main-content">
+
         {isAuthenticated && <Logeado setIsAuthenticated={setIsAuthenticated} setProfileImage={setProfileImage} userRole={userRole} />}
+
+
 
         <Navbar 
           onLoginClick={handleLoginClick} 
           isAuthenticated={isAuthenticated} 
+
           userRole={userRole} 
           cartItemCount={totalItemsInCart} 
           setIsAuthenticated={setIsAuthenticated} 
@@ -103,13 +111,15 @@ function App() {
           setProfileImage={setProfileImage} 
         />
 
+
         <LoginModal 
           show={showModal} 
           handleClose={handleCloseModal} 
           setIsAuthenticated={setIsAuthenticated}
           setUserRole={setUserRole} 
+
           setUsuarioActual={setUsuarioActual} 
-        />
+
 
         <Routes>
           <Route path="/" element={<Home isAuthenticated={isAuthenticated} userRole={userRole} />} />
@@ -121,8 +131,10 @@ function App() {
           <Route path="/perfil" element={<Perfil setProfileImage={setProfileImage} />} />
           <Route path="/*" element={<Home isAuthenticated={isAuthenticated} />} />
 
+
           <Route path="/carrito" element={
             <Carrito
+
               cart={cart}
               handleIncrement={handleIncrement}
               handleDecrement={handleDecrement}
@@ -130,11 +142,15 @@ function App() {
             />
           } />
 
+
+
           <Route path="/Publicaciones" element={
             <ProtectedRoute isAuthenticated={isAuthenticated}>
               <Publicaciones />
             </ProtectedRoute>
           } />
+
+
 
           <Route path="/Articulos" element={
             <ProtectedRoute isAuthenticated={isAuthenticated} userRole={userRole} requiredRole="Admin">
