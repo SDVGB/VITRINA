@@ -6,7 +6,7 @@
   background-color: #f9f9f9; /* Color de fondo más suave */
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
-  font-family: 'Arial', sans-serif;
+  font-family: 'roboto', sans-serif;
 }
 
 /* Título de la sección */
@@ -27,25 +27,43 @@
   gap: 20px;
 }
 
-/* Estilo de cada tarjeta */
-.card3 {
-  width: calc(100% - 20px);
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
 
-/* Estilo de la imagen en la tarjeta */
-.card-img-top3 {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-}
-
-/* Estilo del cuerpo de la tarjeta */
-.card-body3 {
+/* Elementos de la lista de notificaciones */
+.notificaciones-container ul li {
   padding: 15px;
+  border-bottom: 1px solid #e0e0e0; /* Borde más claro */
+  color: #333; /* Texto más oscuro para mejor legibilidad */
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px; /* Espacio entre los elementos del contenido */
+}
+
+/* Estilo para el contenido de la notificación (texto + imagen) */
+.notificacion-content {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio entre el texto y la imagen */
+  flex-grow: 1; /* Permite que el contenido ocupe el espacio restante */
+  flex-direction: column; /* Alinea el texto y la fecha en columna */
+  justify-content: space-between; /* Espaciado entre texto y fecha */
+  height: 100%; /* Asegura que el contenido ocupe toda la altura del contenedor */
+}
+
+/* Estilo para el texto de la notificación */
+.notificaciones-container ul li span {
+  flex-grow: 1;
+  color: #333;
+}
+
+/* Estilo para la fecha de la notificación */
+.notificaciones-container ul li time {
+  color: #777; /* Color más suave para la fecha */
+  font-size: 14px;
+  text-align: right;
+  align-self: flex-end; /* Alinea la fecha en la parte inferior derecha */
+
 }
 
 /* Título de la tarjeta */
@@ -66,4 +84,30 @@
   font-size: 20px; /* Tamaño de fuente ligeramente más grande */
   padding: 20px;
   font-style: italic; /* Estilo en cursiva para diferenciar */
+}
+
+/* Estilo para la imagen en la notificación */
+.notificacion-imagen {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para resaltar la imagen */
+}
+
+/* Estilo para mejorar la accesibilidad en pantallas pequeñas */
+@media (max-width: 400px) {
+  .notificaciones-container ul li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .notificaciones-container ul li time {
+    text-align: left;
+    margin-top: 5px;
+  }
+
+  .notificacion-imagen {
+    max-width: 100%;
+    height: auto;
+  }
 }

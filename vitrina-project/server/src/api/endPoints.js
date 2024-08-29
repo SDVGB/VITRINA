@@ -32,5 +32,6 @@ router.get('/notificaciones/:userRut', profileValidator, obtenerNotificaciones);
 router.get('/ping', ping);
 
 
+
 module.exports = router;
 
