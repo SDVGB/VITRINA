@@ -10,7 +10,9 @@ const getAllPublicaciones = (req, res) => {
     let consulta = `
         SELECT Publicacion.*, Talla.Nombre_Talla 
         FROM Publicacion 
+
         JOIN Talla ON Publicacion.ID_Talla = Talla.ID_Talla
+
     `;
 
     // Si se especifica un tipo, se añade una cláusula WHERE para filtrar por tipo

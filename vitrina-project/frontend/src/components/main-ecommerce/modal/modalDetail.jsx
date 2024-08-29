@@ -59,6 +59,9 @@ const ModalDetail = ({ show, handleClose, product, handleAddToCart }) => {
     );
   }
 
+  // Consola para verificar el contenido de product
+  console.log(product);
+
   return (
     <>
       <Modal show={show} onHide={handleClose} size="xl" centered>

@@ -5,6 +5,7 @@ const Notificaciones = ({ usuarioActual }) => {
   const [notificaciones, setNotificaciones] = useState([]);
 
   useEffect(() => {
+
     const token = localStorage.getItem('token');
 
     fetch(`http://localhost:5000/notificaciones/${usuarioActual}`, {
@@ -14,6 +15,8 @@ const Notificaciones = ({ usuarioActual }) => {
     })
     .then(res => res.json())
     .then(data => setNotificaciones(data.notificaciones))
+
+
     .catch(err => console.error('Error fetching notifications:', err));
   }, [usuarioActual]);
 
@@ -28,8 +31,9 @@ const Notificaciones = ({ usuarioActual }) => {
   };
 
   return (
-    <div className="notificaciones-container">
+    <div className="notificaciones-container3">
       <h2>Tus Notificaciones</h2>
+
       {notificaciones.length > 0 ? (
         <ul>
           {notificaciones.map((notificacion, index) => {
@@ -50,6 +54,7 @@ const Notificaciones = ({ usuarioActual }) => {
       ) : (
         <div className="no-notificaciones">No tienes notificaciones.</div>
       )}
+
     </div>
   );
 };
