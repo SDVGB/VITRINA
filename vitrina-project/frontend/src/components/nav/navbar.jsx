@@ -89,8 +89,6 @@ const Navbar = ({ onLoginClick, cartItemCount, isAuthenticated, setIsAuthenticat
                     </button>
                     <ul className="dropdown-menu">
                       <li><Link className="dropdown-item" to="/perfil">Mi perfil</Link></li>
-                      <li><Link className="dropdown-item" to="/intercambios">Mis intercambios</Link></li>
-                      <li><Link className="dropdown-item" to="/mensajeria">Buzón</Link></li>
                       <li>
                         <button
                           className="dropdown-item"
