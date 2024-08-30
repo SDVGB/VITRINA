@@ -20,6 +20,11 @@
 } */
 
 /* Estilo para los contenedores de entrada (correo, contraseña, etc.) */
+.modal-dialog {
+    max-width: 900px; /* Puedes ajustar el valor según lo necesites */
+    width: 100%;
+  }
+   
 .input-container {
     width: 100%; /* Asegura que el contenedor de entrada ocupe todo el ancho del formulario */
     padding: 10px;

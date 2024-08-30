@@ -52,7 +52,7 @@
   background-color: #218838; /* Oscurecer el verde al pasar el cursor */
 }
 
-.btn-primary5 {
+.btn-primary {
   margin: 2rem 0;
   padding: 10px 20px;
   background-color: #2AA0CD!important; /* Color personalizado para el botón */
@@ -65,7 +65,7 @@
 }
 
 
-.btn-primary5:hover {
+.btn-primary:hover {
   background-color: #1679a0 !important; /* Oscurecer azul al pasar el cursor */
 }
 

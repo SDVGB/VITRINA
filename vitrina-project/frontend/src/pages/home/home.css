@@ -1,3 +1,41 @@
+#Contenedor-Principal{
+  height: 960px;
+  width: 90%;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow-y: auto;
+  background-color: #E4F2FA;
+  border-radius: 10px;
+}
+#Contenedor-publicaciones-blog{
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  padding: 10px;
+  width: 100%;
+  max-height: 100%; 
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.article-card {
+  flex: 0 0 calc(50% - 10px); 
+  box-sizing: border-box;
+  margin-bottom: 5px; 
+  max-height: 48%;
+  overflow: hidden;
+}
+
+
+#Conteneedor-ultima-venta{
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+
 .header-banner {
   display: flex;
   flex-direction: column;  /* Cambia la dirección del eje principal a vertical */
@@ -31,23 +69,6 @@
   margin: 0;
 }
 
-.articles-container {
-  padding: 14px; /* 20px * 0.7 */
-  background-color: #E4F2FA;
-  margin-left: 210px; /* 300px * 0.7 */
-  margin-right: 210px; /* 300px * 0.7 */
-  margin-bottom: 14px; /* 20px * 0.7 */
-}
-
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto;
-  gap: 21px; /* 30px * 0.7 */
-  grid-template-areas: 
-    "card1 card2 large"
-    "card3 card4 large";
-}
 
 .article-card {
   display: grid;
@@ -102,6 +123,16 @@
   font-size: 0.7rem; /* 1rem * 0.7 */
   margin-bottom: 14px; /* 20px * 0.7 */
   color: #777;
+  min-height: 80px;
+  overflow: auto;
+
+  /* Ocultar la barra de scroll */
+  scrollbar-width: none; 
+  -ms-overflow-style: none;  
+}
+
+.article-card p::-webkit-scrollbar {
+  display: none; 
 }
 
 .article-card button {
@@ -137,7 +168,12 @@
   display: grid;
   grid-template-columns: 1fr; 
   grid-template-rows: 4fr 0.28fr 0.7fr 0.21fr; /* Ajuste proporcional */
+  height: 96%;
+  max-height: 96%;
+  margin-top: 9px; 
+  width: 98%;
 }
+
 
 .article-card.large img {
   height: 100%;
@@ -215,6 +251,40 @@
   .article-card button {
     padding: 5px 8px;
     font-size: 0.65rem;
+  }
+}
+@media (max-width: 830px) {
+  #Contenedor-publicaciones-blog {
+    display: block;
+    overflow-y: auto;
+  }
+
+  .article-card {
+    width: 100%; 
+    margin-bottom: 10px; 
+    max-height: none; 
+  }
+}
+/* Ajustes para pantallas de 425px o menos */
+@media (max-width: 425px) {
+  #Contenedor-Principal {
+    flex-direction: column;
+  }
+
+  #Contenedor-ultima-venta {
+    order: -1; 
+    margin-bottom: 20px; 
+  }
+
+  #Contenedor-publicaciones-blog {
+    order: 1;
+    display: block; 
+  }
+
+  .article-card {
+    width: 100%; 
+    margin-bottom: 10px;
+    max-height: none; 
   }
 }
 /*  aca empieza el css de los cambios posteriores, para responsive y luego enlazar al home */
