@@ -1,3 +1,4 @@
+
 INSERT INTO Roles (ID_Rol, Nombre_Rol) VALUES
 ('R001', 'Admin'),
 ('R002', 'User');
