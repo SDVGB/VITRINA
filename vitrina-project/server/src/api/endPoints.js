@@ -15,7 +15,12 @@ const { getAllPublicaciones } = require('../controllers/getAllPublicaciones');
 const { enviarSolicitudContacto } = require('../controllers/solicitudesController');
 const { obtenerNotificaciones } = require('../controllers/notificacionesController');
 const profileValidator = require('../controllers/pofileValidator');
+const { creararticulos } = require('../controllers/createArticleController');
 
+const { getAllArticulos } = require('../controllers/getAllarticulosController');
+router.get('/getallarticulos',getAllArticulos)
+
+router.post('/creararticulos',creararticulos)
 router.post('/register', register);
 router.post('/login', login);
 router.post('/postcreation', profileValidator, postcreation);
@@ -30,6 +35,7 @@ router.get('/publicaciones', getAllPublicaciones);
 router.post('/enviar-solicitud-contacto', enviarSolicitudContacto);
 router.get('/notificaciones/:userRut', profileValidator, obtenerNotificaciones);
 router.get('/ping', ping);
+
 
 
 
