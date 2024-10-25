@@ -7,7 +7,7 @@ VALUES ('877880170229', 'Usuario', 'Paterno', 'Materno', '$2b$10$U1ccgGjVnoO/fL1
 
 
 INSERT INTO Usuario (ID_Rut, Nombre_Usuario, Apellido_Paterno, Apellido_Materno, Contraseña, Correo_Usuario, Roles_ID_Rol)
-VALUES ('a','Valeria','Arredondo','Cardenas','123','beee','R001');
+VALUES ('a','Valeria','Arredondo','Cardenas','$2b$10$U1ccgGjVnoO/fL1VbJIGIuQZBnNtCiAjARh4VwZL2EbVxhkkEVLE.','beee@gmail.com','R001');
 
 INSERT INTO Edad (ID_Edad, Nombre_Edad) VALUES 
 ('E001', 'Niño'),

@@ -90,7 +90,7 @@ CREATE TABLE Articulos
 CREATE TABLE Notificaciones (
     ID_Notificaciones INT AUTO_INCREMENT PRIMARY KEY,  -- Identificador único para cada notificación
     Usuario_ID_Rut CHAR(12) NOT NULL,              -- Identificador del usuario que recibirá la notificación
-    Mensaje_Notificacion VARCHAR(255) NOT NULL,                   -- El mensaje de la notificación
+    Mensaje_Notificacion VARCHAR(1000) NOT NULL,                   -- El mensaje de la notificación
     Fecha_Notificacion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,  -- Fecha y hora en que se creó la notificación
     Visto BOOLEAN DEFAULT FALSE,                     -- Indica si la notificación ha sido vista o no
     FOREIGN KEY (Usuario_ID_Rut) REFERENCES Usuario(ID_Rut)     -- Relación con la tabla de usuarios
